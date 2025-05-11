@@ -1,0 +1,883 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Tambayan.Views"
+             x:Class="Tambayan.MainPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#FAFAFA">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- Scrollable Main Content -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="20,20" Spacing="15">
+
+                <!-- Search Bar + Icons -->
+                <Grid ColumnDefinitions="75*,12.5*,12.5*" Padding="0,0,0,10" VerticalOptions="Center">
+                    <Border Stroke="Black"
+                            StrokeThickness="2"
+                            StrokeShape="RoundRectangle 10,10,10,10"
+                            HeightRequest="48"
+                            Padding="2,8"
+                            HorizontalOptions="Center"
+                            Grid.Column="0">
+                        <SearchBar Placeholder="Search jobs (e.g., cleaning, painting...)"
+                                   FontSize="16"
+                                   BackgroundColor="White"
+                                   HeightRequest="45"
+                                   Margin="0,0,10,0"/>
+                    </Border>
+
+                    <ImageButton Source="filtercateg_icon.png"
+                                 WidthRequest="75" HeightRequest="75" 
+                                 BackgroundColor="Transparent"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center"
+                                 Grid.Column="1" />
+
+                    <ImageButton Source="community_icon.png"
+                                 WidthRequest="75" HeightRequest="75"
+                                 BackgroundColor="Transparent"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center"
+                                 Grid.Column="2" 
+                                 Clicked="OnThreadsClicked"
+                                 />
+                    
+                </Grid>
+
+                <!-- Recommended Section -->
+                <Grid ColumnDefinitions="*,Auto" Padding="0,10,0,0">
+                    <Label Text="For You 🔥"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           Grid.Column="0"
+                           VerticalOptions="Center" />
+
+                    <Button Text="See All"
+                            FontSize="14"
+                            BackgroundColor="Transparent"
+                            TextColor="Blue"
+                            Padding="0"
+                            Grid.Column="1"
+                            VerticalOptions="Center" />
+                </Grid>
+
+                <!-- Horizontal Job Cards -->
+                <ScrollView Orientation="Horizontal" HeightRequest="250">
+                    <HorizontalStackLayout Spacing="15" Padding="10,0">
+                        <!-- Job Card 1 -->
+                        <Frame CornerRadius="20"
+                               Padding="0"
+                               HasShadow="True"
+                               WidthRequest="300"
+                               HeightRequest="230"
+                               IsClippedToBounds="True">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnViewDetailsTapped" />
+                            </Frame.GestureRecognizers> 
+                            <Grid>
+                                <Image Source="card_bg2.png"
+                                       Aspect="AspectFill"
+                                       Opacity="1"
+                                />
+                                <Grid Padding="10, 10, 10, 0">
+                                    <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*">
+                                        
+                                        <!-- Row 0: User Info + Ellipsis -->
+                                        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start">
+                                            <!-- User Info -->
+                                            <HorizontalStackLayout Grid.Column="0" Spacing="10">
+                                                <Image Source="gus.jpg"
+                                                       WidthRequest="40"
+                                                       HeightRequest="40"
+                                                       Aspect="AspectFill">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                                    </Image.Clip>
+                                                </Image>
+                                                <VerticalStackLayout Spacing="2">
+                                                    <Label Text="Juan Dela Cruz" FontAttributes="Bold" FontSize="14" TextColor="White"/>
+                                                    <Label Text="Foreman" FontSize="12" TextColor="#E5E5E5"/>
+                                                </VerticalStackLayout>
+                                            </HorizontalStackLayout>
+
+                                            <!-- Ellipsis -->
+                                            <Frame Grid.Column="4" 
+                                                   BackgroundColor="#f5f5f5"
+                                                   CornerRadius="25"
+                                                   Padding="2"
+                                                   HasShadow="False"
+                                                   HeightRequest="30"
+                                                   WidthRequest="30"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="End">
+                                                <Image Source="ellipsis_icon.png"
+                                                       WidthRequest="40"
+                                                       HeightRequest="40"
+                                                       VerticalOptions="Center"/>
+                                            </Frame>
+                                        </Grid>
+
+                                        <!-- Row 1: Job Title + Time + Description -->
+                                        <VerticalStackLayout Grid.Row="1" Spacing="5" Padding="0,10">
+                                            <HorizontalStackLayout Spacing="5">
+                                                <Label Text="🛠 Construction Helper Needed" FontAttributes="Bold" FontSize="14" TextColor="White"/>
+                                                <Label Text="2h ago" FontSize="12" TextColor="#E5E5E5" VerticalOptions="Center"/>
+                                            </HorizontalStackLayout>
+
+                                            <Label Text="Assist with basic house construction. Meals included. Prior experience preferred."
+                                                   FontSize="13"
+                                                   TextColor="White"
+                                                   LineBreakMode="TailTruncation"/>
+                                        </VerticalStackLayout>
+
+                                        <!-- Row 2: Skills Section (Moved above Info Badges) -->
+                                        <FlexLayout Grid.Row="2"
+                                                    Wrap="Wrap"
+                                                    Direction="Row"
+                                                    JustifyContent="Start"
+                                                    AlignItems="Center"
+                                                    Margin="0,0,0,0">
+                                            <!-- Inline Label + Skills -->
+                                            <Label Text="🏷 Skills:" FontSize="12" FontAttributes="Bold" TextColor="White" Margin="0,0,5,5"/>
+            
+                                            <!-- Skills Badges -->
+                                            <Frame Padding="5,2"
+                                                   Margin="0,0,5,5"
+                                                   CornerRadius="12"
+                                                   BackgroundColor="#EAF5FF"
+                                                   HasShadow="False">
+                                                <Label Text="Carpentry" FontSize="12" TextColor="#0077CC"/>
+                                            </Frame>
+                                            <Frame Padding="5,2"
+                                                   Margin="0,0,5,5"
+                                                   CornerRadius="12"
+                                                   BackgroundColor="#EAF5FF"
+                                                   HasShadow="False">
+                                                <Label Text="Teamwork" FontSize="12" TextColor="#0077CC"/>
+                                            </Frame>
+                                        </FlexLayout>
+                                        
+                                        <!-- Row 3: Info Badges (Now below Skills) -->
+                                        <Grid Grid.Row="3" RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto" Margin="0,0,0,0">
+                                            <!-- Infos -->
+                                            <FlexLayout  Grid.Row="0" Grid.ColumnSpan="2"
+                                                         Wrap="Wrap"
+                                                         Direction="Row"
+                                                         JustifyContent="Start"
+                                                         AlignItems="Center"
+                                                         Margin="0,5,0,0">
+                                                <Frame Padding="5,2"
+                                                       Margin="0,5,5,5"
+                                                       CornerRadius="12"
+                                                       BackgroundColor="#F0F0F0"
+                                                       HasShadow="False">
+                                                    <Label Text="📍 Consolacion" FontSize="12" TextColor="#444"/>
+                                                </Frame>
+                                                <Frame Padding="5,2"
+                                                       Margin="0,5,5,5"
+                                                       CornerRadius="12"
+                                                       BackgroundColor="#F0F0F0"
+                                                       HasShadow="False">
+                                                    <Label Text="⏱ Full-Time" FontSize="12" TextColor="#444"/>
+                                                </Frame>
+                                                <Frame Padding="5,2"
+                                                       Margin="0,5,5,5"
+                                                       CornerRadius="12"
+                                                       BackgroundColor="#F0F0F0"
+                                                       HasShadow="False">
+                                                    <Label Text="📆 2 Weeks" FontSize="12" TextColor="#444"/>
+                                                </Frame>
+                                            </FlexLayout>
+
+                                            <!-- Salary Highlight -->
+                                            <Frame Grid.Row="1" Grid.Column="1"
+                                                   Padding="8,4"
+                                                   BackgroundColor="#FFF5E0"
+                                                   CornerRadius="10"
+                                                   HasShadow="False"
+                                                   VerticalOptions="Center"
+                                                   Margin="0,10,0,0">
+                                                <Label Text="💰 ₱600/day"
+                                                       FontSize="13"
+                                                       FontAttributes="Bold"
+                                                       TextColor="#E06A00"/>
+                                            </Frame>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                        
+                        <Frame CornerRadius="20"
+                               Padding="0"
+                               HasShadow="True"
+                               WidthRequest="300"
+                               HeightRequest="230"
+                               IsClippedToBounds="True"> 
+                            <Grid>
+                                <Image Source="card_bg2.png"
+                                       Aspect="AspectFill"
+                                       Opacity="1"
+                                />
+                                <Grid Padding="10, 10, 10, 0">
+                                    <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*">
+                                        
+                                        <!-- Row 0: User Info + Ellipsis -->
+                                        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start">
+                                            <!-- User Info -->
+                                            <HorizontalStackLayout Grid.Column="0" Spacing="10">
+                                                <Image Source="gus.jpg"
+                                                       WidthRequest="40"
+                                                       HeightRequest="40"
+                                                       Aspect="AspectFill">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                                    </Image.Clip>
+                                                </Image>
+                                                <VerticalStackLayout Spacing="2">
+                                                    <Label Text="Juan Dela Cruz" FontAttributes="Bold" FontSize="14" TextColor="White"/>
+                                                    <Label Text="Foreman" FontSize="12" TextColor="#E5E5E5"/>
+                                                </VerticalStackLayout>
+                                            </HorizontalStackLayout>
+
+                                            <!-- Ellipsis -->
+                                            <Frame Grid.Column="4" 
+                                                   BackgroundColor="#f5f5f5"
+                                                   CornerRadius="25"
+                                                   Padding="2"
+                                                   HasShadow="False"
+                                                   HeightRequest="30"
+                                                   WidthRequest="30"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="End">
+                                                <Image Source="ellipsis_icon.png"
+                                                       WidthRequest="40"
+                                                       HeightRequest="40"
+                                                       VerticalOptions="Center"/>
+                                            </Frame>
+                                        </Grid>
+
+                                        <!-- Row 1: Job Title + Time + Description -->
+                                        <VerticalStackLayout Grid.Row="1" Spacing="5" Padding="0,10">
+                                            <HorizontalStackLayout Spacing="5">
+                                                <Label Text="🛠 Construction Helper Needed" FontAttributes="Bold" FontSize="14" TextColor="White"/>
+                                                <Label Text="2h ago" FontSize="12" TextColor="#E5E5E5" VerticalOptions="Center"/>
+                                            </HorizontalStackLayout>
+
+                                            <Label Text="Assist with basic house construction. Meals included. Prior experience preferred."
+                                                   FontSize="13"
+                                                   TextColor="White"
+                                                   LineBreakMode="TailTruncation"/>
+                                        </VerticalStackLayout>
+
+                                        <!-- Row 2: Skills Section (Moved above Info Badges) -->
+                                        <FlexLayout Grid.Row="2"
+                                                    Wrap="Wrap"
+                                                    Direction="Row"
+                                                    JustifyContent="Start"
+                                                    AlignItems="Center"
+                                                    Margin="0,0,0,0">
+                                            <!-- Inline Label + Skills -->
+                                            <Label Text="🏷 Skills:" FontSize="12" FontAttributes="Bold" TextColor="White" Margin="0,0,5,5"/>
+            
+                                            <!-- Skills Badges -->
+                                            <Frame Padding="5,2"
+                                                   Margin="0,0,5,5"
+                                                   CornerRadius="12"
+                                                   BackgroundColor="#EAF5FF"
+                                                   HasShadow="False">
+                                                <Label Text="Carpentry" FontSize="12" TextColor="#0077CC"/>
+                                            </Frame>
+                                            <Frame Padding="5,2"
+                                                   Margin="0,0,5,5"
+                                                   CornerRadius="12"
+                                                   BackgroundColor="#EAF5FF"
+                                                   HasShadow="False">
+                                                <Label Text="Teamwork" FontSize="12" TextColor="#0077CC"/>
+                                            </Frame>
+                                        </FlexLayout>
+                                        
+                                        <!-- Row 3: Info Badges (Now below Skills) -->
+                                        <Grid Grid.Row="3" RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto" Margin="0,0,0,0">
+                                            <!-- Infos -->
+                                            <FlexLayout  Grid.Row="0" Grid.ColumnSpan="2"
+                                                         Wrap="Wrap"
+                                                         Direction="Row"
+                                                         JustifyContent="Start"
+                                                         AlignItems="Center"
+                                                         Margin="0,5,0,0">
+                                                <Frame Padding="5,2"
+                                                       Margin="0,5,5,5"
+                                                       CornerRadius="12"
+                                                       BackgroundColor="#F0F0F0"
+                                                       HasShadow="False">
+                                                    <Label Text="📍 Consolacion" FontSize="12" TextColor="#444"/>
+                                                </Frame>
+                                                <Frame Padding="5,2"
+                                                       Margin="0,5,5,5"
+                                                       CornerRadius="12"
+                                                       BackgroundColor="#F0F0F0"
+                                                       HasShadow="False">
+                                                    <Label Text="⏱ Full-Time" FontSize="12" TextColor="#444"/>
+                                                </Frame>
+                                                <Frame Padding="5,2"
+                                                       Margin="0,5,5,5"
+                                                       CornerRadius="12"
+                                                       BackgroundColor="#F0F0F0"
+                                                       HasShadow="False">
+                                                    <Label Text="📆 2 Weeks" FontSize="12" TextColor="#444"/>
+                                                </Frame>
+                                            </FlexLayout>
+
+                                            <!-- Salary Highlight -->
+                                            <Frame Grid.Row="1" Grid.Column="1"
+                                                   Padding="8,4"
+                                                   BackgroundColor="#FFF5E0"
+                                                   CornerRadius="10"
+                                                   HasShadow="False"
+                                                   VerticalOptions="Center"
+                                                   Margin="0,10,0,0">
+                                                <Label Text="💰 ₱600/day"
+                                                       FontSize="13"
+                                                       FontAttributes="Bold"
+                                                       TextColor="#E06A00"/>
+                                            </Frame>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                        
+                        <Frame CornerRadius="20"
+                               Padding="0"
+                               HasShadow="True"
+                               WidthRequest="300"
+                               HeightRequest="230"
+                               IsClippedToBounds="True"> 
+                            <Grid>
+                                <Image Source="card_bg2.png"
+                                       Aspect="AspectFill"
+                                       Opacity="1"
+                                />
+                                <Grid Padding="10, 10, 10, 0">
+                                    <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*">
+                                        
+                                        <!-- Row 0: User Info + Ellipsis -->
+                                        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start">
+                                            <!-- User Info -->
+                                            <HorizontalStackLayout Grid.Column="0" Spacing="10">
+                                                <Image Source="gus.jpg"
+                                                       WidthRequest="40"
+                                                       HeightRequest="40"
+                                                       Aspect="AspectFill">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                                    </Image.Clip>
+                                                </Image>
+                                                <VerticalStackLayout Spacing="2">
+                                                    <Label Text="Juan Dela Cruz" FontAttributes="Bold" FontSize="14" TextColor="White"/>
+                                                    <Label Text="Foreman" FontSize="12" TextColor="#E5E5E5"/>
+                                                </VerticalStackLayout>
+                                            </HorizontalStackLayout>
+
+                                            <!-- Ellipsis -->
+                                            <Frame Grid.Column="4" 
+                                                   BackgroundColor="#f5f5f5"
+                                                   CornerRadius="25"
+                                                   Padding="2"
+                                                   HasShadow="False"
+                                                   HeightRequest="30"
+                                                   WidthRequest="30"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="End">
+                                                <Image Source="ellipsis_icon.png"
+                                                       WidthRequest="40"
+                                                       HeightRequest="40"
+                                                       VerticalOptions="Center"/>
+                                            </Frame>
+                                        </Grid>
+
+                                        <!-- Row 1: Job Title + Time + Description -->
+                                        <VerticalStackLayout Grid.Row="1" Spacing="5" Padding="0,10">
+                                            <HorizontalStackLayout Spacing="5">
+                                                <Label Text="🛠 Construction Helper Needed" FontAttributes="Bold" FontSize="14" TextColor="White"/>
+                                                <Label Text="2h ago" FontSize="12" TextColor="#E5E5E5" VerticalOptions="Center"/>
+                                            </HorizontalStackLayout>
+
+                                            <Label Text="Assist with basic house construction. Meals included. Prior experience preferred."
+                                                   FontSize="13"
+                                                   TextColor="White"
+                                                   LineBreakMode="TailTruncation"/>
+                                        </VerticalStackLayout>
+
+                                        <!-- Row 2: Skills Section (Moved above Info Badges) -->
+                                        <FlexLayout Grid.Row="2"
+                                                    Wrap="Wrap"
+                                                    Direction="Row"
+                                                    JustifyContent="Start"
+                                                    AlignItems="Center"
+                                                    Margin="0,0,0,0">
+                                            <!-- Inline Label + Skills -->
+                                            <Label Text="🏷 Skills:" FontSize="12" FontAttributes="Bold" TextColor="White" Margin="0,0,5,5"/>
+            
+                                            <!-- Skills Badges -->
+                                            <Frame Padding="5,2"
+                                                   Margin="0,0,5,5"
+                                                   CornerRadius="12"
+                                                   BackgroundColor="#EAF5FF"
+                                                   HasShadow="False">
+                                                <Label Text="Carpentry" FontSize="12" TextColor="#0077CC"/>
+                                            </Frame>
+                                            <Frame Padding="5,2"
+                                                   Margin="0,0,5,5"
+                                                   CornerRadius="12"
+                                                   BackgroundColor="#EAF5FF"
+                                                   HasShadow="False">
+                                                <Label Text="Teamwork" FontSize="12" TextColor="#0077CC"/>
+                                            </Frame>
+                                        </FlexLayout>
+                                        
+                                        <!-- Row 3: Info Badges (Now below Skills) -->
+                                        <Grid Grid.Row="3" RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto" Margin="0,0,0,0">
+                                            <!-- Infos -->
+                                            <FlexLayout  Grid.Row="0" Grid.ColumnSpan="2"
+                                                         Wrap="Wrap"
+                                                         Direction="Row"
+                                                         JustifyContent="Start"
+                                                         AlignItems="Center"
+                                                         Margin="0,5,0,0">
+                                                <Frame Padding="5,2"
+                                                       Margin="0,5,5,5"
+                                                       CornerRadius="12"
+                                                       BackgroundColor="#F0F0F0"
+                                                       HasShadow="False">
+                                                    <Label Text="📍 Consolacion" FontSize="12" TextColor="#444"/>
+                                                </Frame>
+                                                <Frame Padding="5,2"
+                                                       Margin="0,5,5,5"
+                                                       CornerRadius="12"
+                                                       BackgroundColor="#F0F0F0"
+                                                       HasShadow="False">
+                                                    <Label Text="⏱ Full-Time" FontSize="12" TextColor="#444"/>
+                                                </Frame>
+                                                <Frame Padding="5,2"
+                                                       Margin="0,5,5,5"
+                                                       CornerRadius="12"
+                                                       BackgroundColor="#F0F0F0"
+                                                       HasShadow="False">
+                                                    <Label Text="📆 2 Weeks" FontSize="12" TextColor="#444"/>
+                                                </Frame>
+                                            </FlexLayout>
+
+                                            <!-- Salary Highlight -->
+                                            <Frame Grid.Row="1" Grid.Column="1"
+                                                   Padding="8,4"
+                                                   BackgroundColor="#FFF5E0"
+                                                   CornerRadius="10"
+                                                   HasShadow="False"
+                                                   VerticalOptions="Center"
+                                                   Margin="0,10,0,0">
+                                                <Label Text="💰 ₱600/day"
+                                                       FontSize="13"
+                                                       FontAttributes="Bold"
+                                                       TextColor="#E06A00"/>
+                                            </Frame>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                    </HorizontalStackLayout>
+                </ScrollView>
+
+                <!-- Job Listings -->
+                <Label Text="Available Jobs"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       Margin="0, 10"
+                       TextColor="#111"/>
+
+                <VerticalStackLayout Spacing="20">
+                    <!-- Job Listing 1 -->
+                        <Frame BackgroundColor="White"
+                               CornerRadius="20"
+                               Padding="10"
+                               HasShadow="True"
+                               WidthRequest="350"
+                               MinimumHeightRequest="260">
+
+                            <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*">
+                                
+                                <!-- Row 0: User Info + Ellipsis -->
+                                <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start">
+                                    <!-- User Info -->
+                                    <HorizontalStackLayout Grid.Column="0" Spacing="10">
+                                        <Image Source="gus.jpg"
+                                               WidthRequest="40"
+                                               HeightRequest="40"
+                                               Aspect="AspectFill">
+                                            <Image.Clip>
+                                                <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                            </Image.Clip>
+                                        </Image>
+                                        <VerticalStackLayout Spacing="2">
+                                            <Label Text="Juan Dela Cruz" FontAttributes="Bold" FontSize="14" TextColor="#222"/>
+                                            <Label Text="Foreman" FontSize="12" TextColor="#888"/>
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+
+                                    <!-- Ellipsis -->
+                                    <Image Source="ellipsis_icon.png"
+                                           Grid.Column="2"
+                                           WidthRequest="40"
+                                           HeightRequest="40"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="Center"/>
+                                </Grid>
+
+                                <!-- Row 1: Job Title + Time + Description -->
+                                <VerticalStackLayout Grid.Row="1" Spacing="5" Padding="0,10">
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="🛠 Construction Helper Needed" FontAttributes="Bold" FontSize="14" TextColor="#000"/>
+                                        <Label Text="2h ago" FontSize="12" TextColor="#888" VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+
+                                    <Label Text="Assist with basic house construction. Meals included. Prior experience preferred."
+                                           FontSize="13"
+                                           TextColor="#555"/>
+                                </VerticalStackLayout>
+
+                                <!-- Row 2: Skills Section (Moved above Info Badges) -->
+                                <FlexLayout Grid.Row="2"
+                                            Wrap="Wrap"
+                                            Direction="Row"
+                                            JustifyContent="Start"
+                                            AlignItems="Center"
+                                            Margin="0,5,0,0">
+                                    <!-- Inline Label + Skills -->
+                                    <Label Text="🏷 Skills:" FontSize="12" FontAttributes="Bold" TextColor="#444" Margin="0,0,5,5"/>
+    
+                                    <!-- Skills Badges -->
+                                    <Frame Padding="5,2"
+                                           Margin="0,0,5,5"
+                                           CornerRadius="12"
+                                           BackgroundColor="#EAF5FF"
+                                           HasShadow="False">
+                                        <Label Text="Carpentry" FontSize="12" TextColor="#0077CC"/>
+                                    </Frame>
+                                    <Frame Padding="5,2"
+                                           Margin="0,0,5,5"
+                                           CornerRadius="12"
+                                           BackgroundColor="#EAF5FF"
+                                           HasShadow="False">
+                                        <Label Text="Teamwork" FontSize="12" TextColor="#0077CC"/>
+                                    </Frame>
+                                </FlexLayout>
+                                
+                                <!-- Row 3: Info Badges -->
+                                <Grid Grid.Row="3" RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto" Margin="0,5,0,0">
+                                    <!-- Infos -->
+                                    <FlexLayout  Grid.Row="0" Grid.ColumnSpan="2"
+                                                 Wrap="Wrap"
+                                                 Direction="Row"
+                                                 JustifyContent="Start"
+                                                 AlignItems="Center"
+                                                 Margin="0,5,0,0">
+                                        <Frame Padding="5,2"
+                                               Margin="0,5,5,5"
+                                               CornerRadius="12"
+                                               BackgroundColor="#F0F0F0"
+                                               HasShadow="False">
+                                            <Label Text="📍 Consolacion" FontSize="12" TextColor="#444"/>
+                                        </Frame>
+                                        <Frame Padding="5,2"
+                                               Margin="0,5,5,5"
+                                               CornerRadius="12"
+                                               BackgroundColor="#F0F0F0"
+                                               HasShadow="False">
+                                            <Label Text="⏱ Full-Time" FontSize="12" TextColor="#444"/>
+                                        </Frame>
+                                        <Frame Padding="5,2"
+                                               Margin="0,5,5,5"
+                                               CornerRadius="12"
+                                               BackgroundColor="#F0F0F0"
+                                               HasShadow="False">
+                                            <Label Text="📆 2 Weeks" FontSize="12" TextColor="#444"/>
+                                        </Frame>
+                                    </FlexLayout>
+
+                                    <!-- Salary Highlight -->
+                                    <Frame Grid.Row="1" Grid.Column="1"
+                                           Padding="8,4"
+                                           BackgroundColor="#FFF5E0"
+                                           CornerRadius="10"
+                                           HasShadow="False"
+                                           VerticalOptions="Center"
+                                           Margin="0,10,0,0">
+                                        <Label Text="💰 ₱600/day"
+                                               FontSize="13"
+                                               FontAttributes="Bold"
+                                               TextColor="#E06A00"/>
+                                    </Frame>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                    
+                        <Frame BackgroundColor="White"
+                           CornerRadius="20"
+                           Padding="10"
+                           HasShadow="True"
+                           WidthRequest="350"
+                           MinimumHeightRequest="260">
+
+                            <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*">
+                                
+                                <!-- Row 0: User Info + Ellipsis -->
+                                <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start">
+                                    <!-- User Info -->
+                                    <HorizontalStackLayout Grid.Column="0" Spacing="10">
+                                        <Image Source="gus.jpg"
+                                               WidthRequest="40"
+                                               HeightRequest="40"
+                                               Aspect="AspectFill">
+                                            <Image.Clip>
+                                                <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                            </Image.Clip>
+                                        </Image>
+                                        <VerticalStackLayout Spacing="2">
+                                            <Label Text="Juan Dela Cruz" FontAttributes="Bold" FontSize="14" TextColor="#222"/>
+                                            <Label Text="Foreman" FontSize="12" TextColor="#888"/>
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+
+                                    <!-- Ellipsis -->
+                                    <Image Source="ellipsis_icon.png"
+                                           Grid.Column="2"
+                                           WidthRequest="30"
+                                           HeightRequest="30"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="Center"/>
+                                </Grid>
+
+                                <!-- Row 1: Job Title + Time + Description -->
+                                <VerticalStackLayout Grid.Row="1" Spacing="5" Padding="0,10">
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="🛠 Construction Helper Needed" FontAttributes="Bold" FontSize="14" TextColor="#000"/>
+                                        <Label Text="2h ago" FontSize="12" TextColor="#888" VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+
+                                    <Label Text="Assist with basic house construction. Meals included. Prior experience preferred."
+                                           FontSize="13"
+                                           TextColor="#555"/>
+                                </VerticalStackLayout>
+
+                                <!-- Row 2: Skills Section (Moved above Info Badges) -->
+                                <FlexLayout Grid.Row="2"
+                                            Wrap="Wrap"
+                                            Direction="Row"
+                                            JustifyContent="Start"
+                                            AlignItems="Center"
+                                            Margin="0,5,0,0">
+                                    <!-- Inline Label + Skills -->
+                                    <Label Text="🏷 Skills:" FontSize="12" FontAttributes="Bold" TextColor="#444" Margin="0,0,5,5"/>
+    
+                                    <!-- Skills Badges -->
+                                    <Frame Padding="5,2"
+                                           Margin="0,0,5,5"
+                                           CornerRadius="12"
+                                           BackgroundColor="#EAF5FF"
+                                           HasShadow="False">
+                                        <Label Text="Carpentry" FontSize="12" TextColor="#0077CC"/>
+                                    </Frame>
+                                    <Frame Padding="5,2"
+                                           Margin="0,0,5,5"
+                                           CornerRadius="12"
+                                           BackgroundColor="#EAF5FF"
+                                           HasShadow="False">
+                                        <Label Text="Teamwork" FontSize="12" TextColor="#0077CC"/>
+                                    </Frame>
+                                </FlexLayout>
+                                
+                                <!-- Row 3: Info Badges -->
+                                <Grid Grid.Row="3" RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto" Margin="0,5,0,0">
+                                    <!-- Infos -->
+                                    <FlexLayout  Grid.Row="0" Grid.ColumnSpan="2"
+                                                 Wrap="Wrap"
+                                                 Direction="Row"
+                                                 JustifyContent="Start"
+                                                 AlignItems="Center"
+                                                 Margin="0,5,0,0">
+                                        <Frame Padding="5,2"
+                                               Margin="0,5,5,5"
+                                               CornerRadius="12"
+                                               BackgroundColor="#F0F0F0"
+                                               HasShadow="False">
+                                            <Label Text="📍 Consolacion" FontSize="12" TextColor="#444"/>
+                                        </Frame>
+                                        <Frame Padding="5,2"
+                                               Margin="0,5,5,5"
+                                               CornerRadius="12"
+                                               BackgroundColor="#F0F0F0"
+                                               HasShadow="False">
+                                            <Label Text="⏱ Full-Time" FontSize="12" TextColor="#444"/>
+                                        </Frame>
+                                        <Frame Padding="5,2"
+                                               Margin="0,5,5,5"
+                                               CornerRadius="12"
+                                               BackgroundColor="#F0F0F0"
+                                               HasShadow="False">
+                                            <Label Text="📆 2 Weeks" FontSize="12" TextColor="#444"/>
+                                        </Frame>
+                                    </FlexLayout>
+
+                                    <!-- Salary Highlight -->
+                                    <Frame Grid.Row="1" Grid.Column="1"
+                                           Padding="8,4"
+                                           BackgroundColor="#FFF5E0"
+                                           CornerRadius="10"
+                                           HasShadow="False"
+                                           VerticalOptions="Center"
+                                           Margin="0,10,0,0">
+                                        <Label Text="💰 ₱600/day"
+                                               FontSize="13"
+                                               FontAttributes="Bold"
+                                               TextColor="#E06A00"/>
+                                    </Frame>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                    
+                        <Frame BackgroundColor="White"
+                           CornerRadius="20"
+                           Padding="10"
+                           HasShadow="True"
+                           WidthRequest="350"
+                           MinimumHeightRequest="260">
+
+                            <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*">
+                                
+                                <!-- Row 0: User Info + Ellipsis -->
+                                <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start">
+                                    <!-- User Info -->
+                                    <HorizontalStackLayout Grid.Column="0" Spacing="10">
+                                        <Image Source="gus.jpg"
+                                               WidthRequest="40"
+                                               HeightRequest="40"
+                                               Aspect="AspectFill">
+                                            <Image.Clip>
+                                                <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                            </Image.Clip>
+                                        </Image>
+                                        <VerticalStackLayout Spacing="2">
+                                            <Label Text="Juan Dela Cruz" FontAttributes="Bold" FontSize="14" TextColor="#222"/>
+                                            <Label Text="Foreman" FontSize="12" TextColor="#888"/>
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+
+                                    <!-- Ellipsis -->
+                                    <Image Source="ellipsis_icon.png"
+                                           Grid.Column="2"
+                                           WidthRequest="40"
+                                           HeightRequest="40"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="Center"/>
+                                </Grid>
+
+                                <!-- Row 1: Job Title + Time + Description -->
+                                <VerticalStackLayout Grid.Row="1" Spacing="5" Padding="0,10">
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="🛠 Construction Helper Needed" FontAttributes="Bold" FontSize="14" TextColor="#000"/>
+                                        <Label Text="2h ago" FontSize="12" TextColor="#888" VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+
+                                    <Label Text="Assist with basic house construction. Meals included. Prior experience preferred."
+                                           FontSize="13"
+                                           TextColor="#555"/>
+                                </VerticalStackLayout>
+
+                                <!-- Row 2: Skills Section (Moved above Info Badges) -->
+                                <FlexLayout Grid.Row="2"
+                                            Wrap="Wrap"
+                                            Direction="Row"
+                                            JustifyContent="Start"
+                                            AlignItems="Center"
+                                            Margin="0,5,0,0">
+                                    <!-- Inline Label + Skills -->
+                                    <Label Text="🏷 Skills:" FontSize="12" FontAttributes="Bold" TextColor="#444" Margin="0,0,5,5"/>
+    
+                                    <!-- Skills Badges -->
+                                    <Frame Padding="5,2"
+                                           Margin="0,0,5,5"
+                                           CornerRadius="12"
+                                           BackgroundColor="#EAF5FF"
+                                           HasShadow="False">
+                                        <Label Text="Carpentry" FontSize="12" TextColor="#0077CC"/>
+                                    </Frame>
+                                    <Frame Padding="5,2"
+                                           Margin="0,0,5,5"
+                                           CornerRadius="12"
+                                           BackgroundColor="#EAF5FF"
+                                           HasShadow="False">
+                                        <Label Text="Teamwork" FontSize="12" TextColor="#0077CC"/>
+                                    </Frame>
+                                </FlexLayout>
+                                
+                                <!-- Row 3: Info Badges -->
+                                <Grid Grid.Row="3" RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto" Margin="0,5,0,0">
+                                    <!-- Infos -->
+                                    <FlexLayout  Grid.Row="0" Grid.ColumnSpan="2"
+                                                 Wrap="Wrap"
+                                                 Direction="Row"
+                                                 JustifyContent="Start"
+                                                 AlignItems="Center"
+                                                 Margin="0,5,0,0">
+                                        <Frame Padding="5,2"
+                                               Margin="0,5,5,5"
+                                               CornerRadius="12"
+                                               BackgroundColor="#F0F0F0"
+                                               HasShadow="False">
+                                            <Label Text="📍 Consolacion" FontSize="12" TextColor="#444"/>
+                                        </Frame>
+                                        <Frame Padding="5,2"
+                                               Margin="0,5,5,5"
+                                               CornerRadius="12"
+                                               BackgroundColor="#F0F0F0"
+                                               HasShadow="False">
+                                            <Label Text="⏱ Full-Time" FontSize="12" TextColor="#444"/>
+                                        </Frame>
+                                        <Frame Padding="5,2"
+                                               Margin="0,5,5,5"
+                                               CornerRadius="12"
+                                               BackgroundColor="#F0F0F0"
+                                               HasShadow="False">
+                                            <Label Text="📆 2 Weeks" FontSize="12" TextColor="#444"/>
+                                        </Frame>
+                                    </FlexLayout>
+
+                                    <!-- Salary Highlight -->
+                                    <Frame Grid.Row="1" Grid.Column="1"
+                                           Padding="8,4"
+                                           BackgroundColor="#FFF5E0"
+                                           CornerRadius="10"
+                                           HasShadow="False"
+                                           VerticalOptions="Center"
+                                           Margin="0,10,0,0">
+                                        <Label Text="💰 ₱600/day"
+                                               FontSize="13"
+                                               FontAttributes="Bold"
+                                               TextColor="#E06A00"/>
+                                    </Frame>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <views:BottomNavBar Grid.Row="1" />
+
+    </Grid>
+</ContentPage>

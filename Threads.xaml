@@ -1,0 +1,762 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Tambayan.Views"
+             x:Class="Tambayan.Threads"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F9F9F9">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- Scrollable Content -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="20,20" Spacing="15">
+
+                <!-- Search Bar + Icons -->
+                <Grid ColumnDefinitions="75*,12.5*,12.5*" Padding="0,0,0,10" VerticalOptions="Center">
+                    <Border Stroke="Black"
+                            StrokeThickness="2"
+                            StrokeShape="RoundRectangle 10,10,10,10"
+                            HeightRequest="48"
+                            Padding="2,8"
+                            HorizontalOptions="Center"
+                            Grid.Column="0">
+                        <SearchBar Placeholder="Search topics (e.g., cleaning, painting...)"
+                                   FontSize="16"
+                                   BackgroundColor="White"
+                                   HeightRequest="45"
+                                   Margin="0,0,10,0"/>
+                    </Border>
+
+                    <ImageButton Source="filtercateg_icon.png"
+                                 WidthRequest="75" HeightRequest="75"
+                                 BackgroundColor="Transparent"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center"
+                                 Grid.Column="1" />
+
+                    <ImageButton Source="job_icon.png"
+                                 WidthRequest="75" HeightRequest="75"
+                                 BackgroundColor="Transparent"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center"
+                                 Grid.Column="2" 
+                                 Clicked="OnJobsClicked"
+                    />
+                    
+                </Grid>
+
+                <!-- Community Threads Section -->
+               <Grid ColumnDefinitions="*,Auto" Padding="0">
+                   <Label Text="Trending Topics 🔥"
+                          FontSize="20"
+                          FontAttributes="Bold"
+                          Grid.Column="0"
+                          VerticalOptions="Center" />
+
+                   <Button Text="See All"
+                           FontSize="14"
+                           BackgroundColor="Transparent"
+                           TextColor="Blue"
+                           Padding="0"
+                           Grid.Column="1"
+                           VerticalOptions="Center" />
+               </Grid>
+                <ScrollView Orientation="Horizontal" HeightRequest="220">
+                   <!-- Community Threads Post - Vertical Layout -->
+                   <HorizontalStackLayout Spacing="15" Padding="10, 0">
+                       <!-- Community Post Card 1 -->
+                       <Frame CornerRadius="20"
+                              Padding="0"
+                              HasShadow="True"
+                              WidthRequest="300"
+                              HeightRequest="220"
+                              IsClippedToBounds="True"> <!-- Important to clip corners on image -->
+                           <Grid>
+                               <!-- Background Image Layer -->
+                               <Image Source="card_bg.png"
+                                      Aspect="AspectFill"
+                                      Opacity="1"
+                               />
+                               
+                               <Grid Padding="10, 10, 10, 0">
+                                    <Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="*">
+                                        
+                                        <!-- Row 0: Avatar + Name + Role + Ellipsis Icon -->
+                                        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start">
+                                            <!-- User Info -->
+                                            <HorizontalStackLayout Grid.Column="0" Spacing="10">
+                                                <Image Source="gus.jpg"
+                                                       WidthRequest="40"
+                                                       HeightRequest="40"
+                                                       Aspect="AspectFill">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                                    </Image.Clip>
+                                                </Image>
+                                                <VerticalStackLayout Spacing="2">
+                                                    <Label Text="Gustavo Fring" FontAttributes="Bold" FontSize="14" TextColor="White"/>
+                                                    <Label Text="Virtual Assistant" FontSize="12" TextColor="#E5E5E5"/>
+                                                </VerticalStackLayout>
+                                            </HorizontalStackLayout>
+
+                                            <!-- Ellipsis Icon -->
+                                            <Frame Grid.Column="4" 
+                                                   BackgroundColor="#f5f5f5"
+                                                   CornerRadius="25"
+                                                   Padding="2"
+                                                   HasShadow="False"
+                                                   HeightRequest="30"
+                                                   WidthRequest="30"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="End">
+                                                <Image Source="ellipsis_icon.png"
+                                                       WidthRequest="20"
+                                                       HeightRequest="20"
+                                                       VerticalOptions="Center"/>
+                                            </Frame>
+                                        </Grid>
+
+                                        <!-- Row 1: Post Title + Time and Post Text -->
+                                        <VerticalStackLayout Grid.Row="1" Spacing="5" VerticalOptions="CenterAndExpand">
+                                            
+                                            <!-- Title + Time -->
+                                            <HorizontalStackLayout Spacing="5">
+                                                <Label Text="Tips for Beginners [Must Read]" FontAttributes="Bold" FontSize="14" TextColor="White"/>
+                                                <Label Text="1h ago" FontSize="12" TextColor="#E5E5E5" VerticalOptions="Center"/>
+                                            </HorizontalStackLayout>
+
+                                            <!-- Post Text -->
+                                            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a arcu sit amet elit egestas elementum..."
+                                                   FontSize="13"
+                                                   TextColor="White"
+                                                   LineBreakMode="TailTruncation" />
+                                        </VerticalStackLayout>
+
+                                        <!-- Row 2: Reactions + Share Icon -->
+                                        <Grid Grid.Row="2"
+                                              ColumnDefinitions="Auto,Auto,Auto,*,Auto"
+                                              VerticalOptions="End"
+                                              Padding="0,20,0,10"
+                                              ColumnSpacing="5">
+
+                                            <!-- Frame 1: Heart Icon + Count -->
+                                            <Frame Grid.Column="0"
+                                                   BackgroundColor="#f5f5f5"
+                                                   CornerRadius="25"
+                                                   Padding="2"
+                                                   HasShadow="False">
+                                                <HorizontalStackLayout Spacing="0" HeightRequest="25">
+                                                    <Image Source="heart_icon.png" WidthRequest="20" HeightRequest="20" />
+                                                    <Label Text="108" FontSize="12" Padding="5, 0, 10, 0" TextColor="#444" VerticalOptions="Center"/>
+                                                </HorizontalStackLayout>
+                                            </Frame>
+
+                                            <!-- Frame 2: Comment Icon + Count -->
+                                            <Frame Grid.Column="1"
+                                                   BackgroundColor="#f5f5f5"
+                                                   CornerRadius="25"
+                                                   Padding="2"
+                                                   HasShadow="False">
+                                                <HorizontalStackLayout Spacing="0" HeightRequest="25">
+                                                    <Image Source="comment_icon.png" WidthRequest="20" HeightRequest="20"/>
+                                                    <Label Text="214" FontSize="12" Padding="5, 0, 10, 0" TextColor="#444" VerticalOptions="Center"/>
+                                                </HorizontalStackLayout>
+                                            </Frame>
+
+                                            <!-- Spacer -->
+                                            <BoxView Grid.Column="2" WidthRequest="10" BackgroundColor="Transparent"/>
+
+                                            <!-- Share Icon aligned right -->
+                                            <Frame Grid.Column="4" 
+                                                   BackgroundColor="#f5f5f5"
+                                                   CornerRadius="25"
+                                                   Padding="2"
+                                                   HasShadow="False"
+                                                   WidthRequest="50"
+                                                   HeightRequest="32"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="End">
+                                                <Image Source="share_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                                            </Frame>
+                                        </Grid>
+                                    </Grid>
+                               </Grid>
+                           </Grid>
+                        </Frame>
+                       
+                        <Frame CornerRadius="20"
+                              Padding="0"
+                              HasShadow="True"
+                              WidthRequest="300"
+                              HeightRequest="220"
+                              IsClippedToBounds="True"> <!-- Important to clip corners on image -->
+                           <Grid>
+                               <!-- Background Image Layer -->
+                               <Image Source="card_bg.png"
+                                      Aspect="AspectFill"
+                                      Opacity="1"
+                               />
+                               
+                               <Grid Padding="10, 10, 10, 0">
+                                    <Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="*">
+                                        
+                                        <!-- Row 0: Avatar + Name + Role + Ellipsis Icon -->
+                                        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start">
+                                            <!-- User Info -->
+                                            <HorizontalStackLayout Grid.Column="0" Spacing="10">
+                                                <Image Source="gus.jpg"
+                                                       WidthRequest="40"
+                                                       HeightRequest="40"
+                                                       Aspect="AspectFill">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                                    </Image.Clip>
+                                                </Image>
+                                                <VerticalStackLayout Spacing="2">
+                                                    <Label Text="Gustavo Fring" FontAttributes="Bold" FontSize="14" TextColor="White"/>
+                                                    <Label Text="Virtual Assistant" FontSize="12" TextColor="#E5E5E5"/>
+                                                </VerticalStackLayout>
+                                            </HorizontalStackLayout>
+
+                                            <!-- Ellipsis Icon -->
+                                            <Frame Grid.Column="4" 
+                                                   BackgroundColor="#f5f5f5"
+                                                   CornerRadius="25"
+                                                   Padding="2"
+                                                   HasShadow="False"
+                                                   HeightRequest="30"
+                                                   WidthRequest="30"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="End">
+                                                <Image Source="ellipsis_icon.png"
+                                                       WidthRequest="20"
+                                                       HeightRequest="20"
+                                                       VerticalOptions="Center"/>
+                                            </Frame>
+                                        </Grid>
+
+                                        <!-- Row 1: Post Title + Time and Post Text -->
+                                        <VerticalStackLayout Grid.Row="1" Spacing="5" VerticalOptions="CenterAndExpand">
+                                            
+                                            <!-- Title + Time -->
+                                            <HorizontalStackLayout Spacing="5">
+                                                <Label Text="Tips for Beginners [Must Read]" FontAttributes="Bold" FontSize="14" TextColor="White"/>
+                                                <Label Text="1h ago" FontSize="12" TextColor="#E5E5E5" VerticalOptions="Center"/>
+                                            </HorizontalStackLayout>
+
+                                            <!-- Post Text -->
+                                            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a arcu sit amet elit egestas elementum..."
+                                                   FontSize="13"
+                                                   TextColor="White"
+                                                   LineBreakMode="TailTruncation" />
+                                        </VerticalStackLayout>
+
+                                        <!-- Row 2: Reactions + Share Icon -->
+                                        <Grid Grid.Row="2"
+                                              ColumnDefinitions="Auto,Auto,Auto,*,Auto"
+                                              VerticalOptions="End"
+                                              Padding="0,20,0,10"
+                                              ColumnSpacing="5">
+
+                                            <!-- Frame 1: Heart Icon + Count -->
+                                            <Frame Grid.Column="0"
+                                                   BackgroundColor="#f5f5f5"
+                                                   CornerRadius="25"
+                                                   Padding="2"
+                                                   HasShadow="False">
+                                                <HorizontalStackLayout Spacing="0" HeightRequest="25">
+                                                    <Image Source="heart_icon.png" WidthRequest="20" HeightRequest="20" />
+                                                    <Label Text="108" FontSize="12" Padding="5, 0, 10, 0" TextColor="#444" VerticalOptions="Center"/>
+                                                </HorizontalStackLayout>
+                                            </Frame>
+
+                                            <!-- Frame 2: Comment Icon + Count -->
+                                            <Frame Grid.Column="1"
+                                                   BackgroundColor="#f5f5f5"
+                                                   CornerRadius="25"
+                                                   Padding="2"
+                                                   HasShadow="False">
+                                                <HorizontalStackLayout Spacing="0" HeightRequest="25">
+                                                    <Image Source="comment_icon.png" WidthRequest="20" HeightRequest="20"/>
+                                                    <Label Text="214" FontSize="12" Padding="5, 0, 10, 0" TextColor="#444" VerticalOptions="Center"/>
+                                                </HorizontalStackLayout>
+                                            </Frame>
+
+                                            <!-- Spacer -->
+                                            <BoxView Grid.Column="2" WidthRequest="10" BackgroundColor="Transparent"/>
+
+                                            <!-- Share Icon aligned right -->
+                                            <Frame Grid.Column="4" 
+                                                   BackgroundColor="#f5f5f5"
+                                                   CornerRadius="25"
+                                                   Padding="2"
+                                                   HasShadow="False"
+                                                   WidthRequest="50"
+                                                   HeightRequest="32"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="End">
+                                                <Image Source="share_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                                            </Frame>
+                                        </Grid>
+                                    </Grid>
+                               </Grid>
+                           </Grid>
+                        </Frame>
+                       
+                       <Frame CornerRadius="20"
+                              Padding="0"
+                              HasShadow="True"
+                              WidthRequest="300"
+                              HeightRequest="220"
+                              IsClippedToBounds="True"> <!-- Important to clip corners on image -->
+                           <Grid>
+                               <!-- Background Image Layer -->
+                               <Image Source="card_bg.png"
+                                      Aspect="AspectFill"
+                                      Opacity="1"
+                               />
+                               
+                               <Grid Padding="10, 10, 10, 0">
+                                    <Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="*">
+                                        
+                                        <!-- Row 0: Avatar + Name + Role + Ellipsis Icon -->
+                                        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start">
+                                            <!-- User Info -->
+                                            <HorizontalStackLayout Grid.Column="0" Spacing="10">
+                                                <Image Source="gus.jpg"
+                                                       WidthRequest="40"
+                                                       HeightRequest="40"
+                                                       Aspect="AspectFill">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                                    </Image.Clip>
+                                                </Image>
+                                                <VerticalStackLayout Spacing="2">
+                                                    <Label Text="Gustavo Fring" FontAttributes="Bold" FontSize="14" TextColor="White"/>
+                                                    <Label Text="Virtual Assistant" FontSize="12" TextColor="#E5E5E5"/>
+                                                </VerticalStackLayout>
+                                            </HorizontalStackLayout>
+
+                                            <!-- Ellipsis Icon -->
+                                            <Frame Grid.Column="4" 
+                                                   BackgroundColor="#f5f5f5"
+                                                   CornerRadius="25"
+                                                   Padding="2"
+                                                   HasShadow="False"
+                                                   HeightRequest="30"
+                                                   WidthRequest="30"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="End">
+                                                <Image Source="ellipsis_icon.png"
+                                                       WidthRequest="20"
+                                                       HeightRequest="20"
+                                                       VerticalOptions="Center"/>
+                                            </Frame>
+                                        </Grid>
+
+                                        <!-- Row 1: Post Title + Time and Post Text -->
+                                        <VerticalStackLayout Grid.Row="1" Spacing="5" VerticalOptions="CenterAndExpand">
+                                            
+                                            <!-- Title + Time -->
+                                            <HorizontalStackLayout Spacing="5">
+                                                <Label Text="Tips for Beginners [Must Read]" FontAttributes="Bold" FontSize="14" TextColor="White"/>
+                                                <Label Text="1h ago" FontSize="12" TextColor="#E5E5E5" VerticalOptions="Center"/>
+                                            </HorizontalStackLayout>
+
+                                            <!-- Post Text -->
+                                            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a arcu sit amet elit egestas elementum..."
+                                                   FontSize="13"
+                                                   TextColor="White"
+                                                   LineBreakMode="TailTruncation" />
+                                        </VerticalStackLayout>
+
+                                        <!-- Row 2: Reactions + Share Icon -->
+                                        <Grid Grid.Row="2"
+                                              ColumnDefinitions="Auto,Auto,Auto,*,Auto"
+                                              VerticalOptions="End"
+                                              Padding="0,20,0,10"
+                                              ColumnSpacing="5">
+
+                                            <!-- Frame 1: Heart Icon + Count -->
+                                            <Frame Grid.Column="0"
+                                                   BackgroundColor="#f5f5f5"
+                                                   CornerRadius="25"
+                                                   Padding="2"
+                                                   HasShadow="False">
+                                                <HorizontalStackLayout Spacing="0" HeightRequest="25">
+                                                    <Image Source="heart_icon.png" WidthRequest="20" HeightRequest="20" />
+                                                    <Label Text="108" FontSize="12" Padding="5, 0, 10, 0" TextColor="#444" VerticalOptions="Center"/>
+                                                </HorizontalStackLayout>
+                                            </Frame>
+
+                                            <!-- Frame 2: Comment Icon + Count -->
+                                            <Frame Grid.Column="1"
+                                                   BackgroundColor="#f5f5f5"
+                                                   CornerRadius="25"
+                                                   Padding="2"
+                                                   HasShadow="False">
+                                                <HorizontalStackLayout Spacing="0" HeightRequest="25">
+                                                    <Image Source="comment_icon.png" WidthRequest="20" HeightRequest="20"/>
+                                                    <Label Text="214" FontSize="12" Padding="5, 0, 10, 0" TextColor="#444" VerticalOptions="Center"/>
+                                                </HorizontalStackLayout>
+                                            </Frame>
+
+                                            <!-- Spacer -->
+                                            <BoxView Grid.Column="2" WidthRequest="10" BackgroundColor="Transparent"/>
+
+                                            <!-- Share Icon aligned right -->
+                                            <Frame Grid.Column="4" 
+                                                   BackgroundColor="#f5f5f5"
+                                                   CornerRadius="25"
+                                                   Padding="2"
+                                                   HasShadow="False"
+                                                   WidthRequest="50"
+                                                   HeightRequest="32"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="End">
+                                                <Image Source="share_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                                            </Frame>
+                                        </Grid>
+                                    </Grid>
+                               </Grid>
+                           </Grid>
+                        </Frame>
+                    </HorizontalStackLayout>
+                </ScrollView>
+
+
+                
+                <!-- Title -->
+                <Label Text="Community Threads"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="#111"/>
+
+                <!-- Posts -->
+                <VerticalStackLayout Spacing="20">
+                        <Frame BackgroundColor="White"
+                               CornerRadius="20"
+                               Padding="10, 10, 10, 0"
+                               HasShadow="True"
+                               WidthRequest="350"
+                               HeightRequest="250">
+
+                            <Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="*">
+                                
+                                <!-- Row 0: Avatar + Name + Role + Ellipsis Icon -->
+                                <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start">
+                                    <!-- User Info -->
+                                    <HorizontalStackLayout Grid.Column="0" Spacing="10">
+                                        <Image Source="gus.jpg"
+                                               WidthRequest="40"
+                                               HeightRequest="40"
+                                               Aspect="AspectFill">
+                                            <Image.Clip>
+                                                <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                            </Image.Clip>
+                                        </Image>
+                                        <VerticalStackLayout Spacing="2">
+                                            <Label Text="Gustavo Fring" FontAttributes="Bold" FontSize="14" TextColor="#222"/>
+                                            <Label Text="Virtual Assistant" FontSize="12" TextColor="#888"/>
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+
+                                    <!-- Ellipsis Icon -->
+                                    <Image Source="ellipsis_icon.png"
+                                           Grid.Column="2"
+                                           Margin="0, 0, 10, 15"
+                                           WidthRequest="20"
+                                           HeightRequest="20"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="Center"/>
+                                </Grid>
+
+                                <!-- Row 1: Post Title + Time and Post Text -->
+                                <VerticalStackLayout Grid.Row="1" Spacing="5" VerticalOptions="CenterAndExpand">
+                                    
+                                    <!-- Title + Time -->
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="Tips for Beginners [Must Read]" FontAttributes="Bold" FontSize="14" TextColor="#000"/>
+                                        <Label Text="1h ago" FontSize="12" TextColor="#888" VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+
+                                    <!-- Post Text -->
+                                    <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis ipsum mi. Nunc vel felis tincidunt, ultricies lacus ut, aliquam ex. Proin facilisis purus sit amet felis ultricies, sed mollis ligula eleifend. Aliquam pharetra libero non justo lobortis, a ullamcorper diam lobortis."
+                                           FontSize="13"
+                                           TextColor="#555"/>
+                                </VerticalStackLayout>
+
+                                <!-- Row 2: Reactions + Share Icon -->
+                                <Grid Grid.Row="2"
+                                      ColumnDefinitions="Auto,Auto,Auto,*,Auto"
+                                      VerticalOptions="End"
+                                      Padding="0,20,0,10"
+                                      ColumnSpacing="5">
+
+                                    <!-- Frame 1: Heart Icon + Count -->
+                                    <Frame Grid.Column="0"
+                                           BackgroundColor="#f5f5f5"
+                                           CornerRadius="25"
+                                           Padding="2"
+                                           HasShadow="False"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start">
+                                        <HorizontalStackLayout Spacing="0" HeightRequest="25">
+                                            <Image Source="heart_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                                            <Label Text="108" FontSize="12" Padding="5, 0, 10, 0" TextColor="#444" VerticalOptions="Center"/>
+                                        </HorizontalStackLayout>
+                                    </Frame>
+
+                                    <!-- Frame 2: Comment Icon + Count -->
+                                    <Frame Grid.Column="1"
+                                           BackgroundColor="#f5f5f5"
+                                           CornerRadius="25"
+                                           Padding="2"
+                                           HasShadow="False"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start">
+                                        <HorizontalStackLayout Spacing="0" HeightRequest="25">
+                                            <Image Source="comment_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                                            <Label Text="214" FontSize="12" Padding="5, 0, 10, 0" TextColor="#444" VerticalOptions="Center"/>
+                                        </HorizontalStackLayout>
+                                    </Frame>
+
+                                    <!-- Spacer -->
+                                    <BoxView Grid.Column="2" WidthRequest="10" BackgroundColor="Transparent"/>
+
+                                    <!-- Share Icon aligned right -->
+                                    <Frame Grid.Column="4" 
+                                           BackgroundColor="#f5f5f5"
+                                           CornerRadius="25"
+                                           Padding="2"
+                                           HasShadow="False"
+                                           WidthRequest="50"
+                                           HeightRequest="32"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="End">
+                                        <Image Source="share_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                                    </Frame>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                    
+                        <Frame BackgroundColor="White"
+                           CornerRadius="20"
+                           Padding="10, 10, 10, 0"
+                           HasShadow="True"
+                           WidthRequest="350"
+                           HeightRequest="250">
+
+                            <Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="*">
+                                
+                                <!-- Row 0: Avatar + Name + Role + Ellipsis Icon -->
+                                <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start">
+                                    <!-- User Info -->
+                                    <HorizontalStackLayout Grid.Column="0" Spacing="10">
+                                        <Image Source="gus.jpg"
+                                               WidthRequest="40"
+                                               HeightRequest="40"
+                                               Aspect="AspectFill">
+                                            <Image.Clip>
+                                                <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                            </Image.Clip>
+                                        </Image>
+                                        <VerticalStackLayout Spacing="2">
+                                            <Label Text="Gustavo Fring" FontAttributes="Bold" FontSize="14" TextColor="#222"/>
+                                            <Label Text="Virtual Assistant" FontSize="12" TextColor="#888"/>
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+
+                                    <!-- Ellipsis Icon -->
+                                    <Image Source="ellipsis_icon.png"
+                                           Grid.Column="2"
+                                           WidthRequest="20"
+                                           HeightRequest="20"
+                                           Margin="0, 0, 10, 15"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="Center"/>
+                                </Grid>
+
+                                <!-- Row 1: Post Title + Time and Post Text -->
+                                <VerticalStackLayout Grid.Row="1" Spacing="5" VerticalOptions="CenterAndExpand">
+                                    
+                                    <!-- Title + Time -->
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="Tips for Beginners [Must Read]" FontAttributes="Bold" FontSize="14" TextColor="#000"/>
+                                        <Label Text="1h ago" FontSize="12" TextColor="#888" VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+
+                                    <!-- Post Text -->
+                                    <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis ipsum mi. Nunc vel felis tincidunt, ultricies lacus ut, aliquam ex. Proin facilisis purus sit amet felis ultricies, sed mollis ligula eleifend. Aliquam pharetra libero non justo lobortis, a ullamcorper diam lobortis."
+                                           FontSize="13"
+                                           TextColor="#555"/>
+                                </VerticalStackLayout>
+
+                                <!-- Row 2: Reactions + Share Icon -->
+                                <Grid Grid.Row="2"
+                                      ColumnDefinitions="Auto,Auto,Auto,*,Auto"
+                                      VerticalOptions="End"
+                                      Padding="0,20,0,10"
+                                      ColumnSpacing="5">
+
+                                    <!-- Frame 1: Heart Icon + Count -->
+                                    <Frame Grid.Column="0"
+                                           BackgroundColor="#f5f5f5"
+                                           CornerRadius="25"
+                                           Padding="2"
+                                           HasShadow="False"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start">
+                                        <HorizontalStackLayout Spacing="0" HeightRequest="25">
+                                            <Image Source="heart_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                                            <Label Text="108" FontSize="12" Padding="5, 0, 10, 0" TextColor="#444" VerticalOptions="Center"/>
+                                        </HorizontalStackLayout>
+                                    </Frame>
+
+                                    <!-- Frame 2: Comment Icon + Count -->
+                                    <Frame Grid.Column="1"
+                                           BackgroundColor="#f5f5f5"
+                                           CornerRadius="25"
+                                           Padding="2"
+                                           HasShadow="False"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start">
+                                        <HorizontalStackLayout Spacing="0" HeightRequest="25">
+                                            <Image Source="comment_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                                            <Label Text="214" FontSize="12" Padding="5, 0, 10, 0" TextColor="#444" VerticalOptions="Center"/>
+                                        </HorizontalStackLayout>
+                                    </Frame>
+
+                                    <!-- Spacer -->
+                                    <BoxView Grid.Column="2" WidthRequest="10" BackgroundColor="Transparent"/>
+
+                                    <!-- Share Icon aligned right -->
+                                    <Frame Grid.Column="4" 
+                                           BackgroundColor="#f5f5f5"
+                                           CornerRadius="25"
+                                           Padding="2"
+                                           HasShadow="False"
+                                           WidthRequest="50"
+                                           HeightRequest="32"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="End">
+                                        <Image Source="share_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                                    </Frame>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                    
+                        <Frame BackgroundColor="White"
+                           CornerRadius="20"
+                           Padding="10, 10, 10, 0"
+                           HasShadow="True"
+                           WidthRequest="350"
+                           HeightRequest="250">
+
+                            <Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="*">
+                                
+                                <!-- Row 0: Avatar + Name + Role + Ellipsis Icon -->
+                                <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start">
+                                    <!-- User Info -->
+                                    <HorizontalStackLayout Grid.Column="0" Spacing="10">
+                                        <Image Source="gus.jpg"
+                                               WidthRequest="40"
+                                               HeightRequest="40"
+                                               Aspect="AspectFill">
+                                            <Image.Clip>
+                                                <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                            </Image.Clip>
+                                        </Image>
+                                        <VerticalStackLayout Spacing="2">
+                                            <Label Text="Gustavo Fring" FontAttributes="Bold" FontSize="14" TextColor="#222"/>
+                                            <Label Text="Virtual Assistant" FontSize="12" TextColor="#888"/>
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+
+                                    <!-- Ellipsis Icon -->
+                                    <Image Source="ellipsis_icon.png"
+                                           Grid.Column="2"
+                                           WidthRequest="20"
+                                           HeightRequest="20"
+                                           Margin="0, 0, 10, 15"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="Center"/>
+                                </Grid>
+
+                                <!-- Row 1: Post Title + Time and Post Text -->
+                                <VerticalStackLayout Grid.Row="1" Spacing="5" VerticalOptions="CenterAndExpand">
+                                    
+                                    <!-- Title + Time -->
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="Tips for Beginners [Must Read]" FontAttributes="Bold" FontSize="14" TextColor="#000"/>
+                                        <Label Text="1h ago" FontSize="12" TextColor="#888" VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+
+                                    <!-- Post Text -->
+                                    <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis ipsum mi. Nunc vel felis tincidunt, ultricies lacus ut, aliquam ex. Proin facilisis purus sit amet felis ultricies, sed mollis ligula eleifend. Aliquam pharetra libero non justo lobortis, a ullamcorper diam lobortis."
+                                           FontSize="13"
+                                           TextColor="#555"/>
+                                </VerticalStackLayout>
+
+                                <!-- Row 2: Reactions + Share Icon -->
+                                <Grid Grid.Row="2"
+                                      ColumnDefinitions="Auto,Auto,Auto,*,Auto"
+                                      VerticalOptions="End"
+                                      Padding="0,20,0,10"
+                                      ColumnSpacing="5">
+
+                                    <!-- Frame 1: Heart Icon + Count -->
+                                    <Frame Grid.Column="0"
+                                           BackgroundColor="#f5f5f5"
+                                           CornerRadius="25"
+                                           Padding="2"
+                                           HasShadow="False"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start">
+                                        <HorizontalStackLayout Spacing="0" HeightRequest="25">
+                                            <Image Source="heart_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                                            <Label Text="108" FontSize="12" Padding="5, 0, 10, 0" TextColor="#444" VerticalOptions="Center"/>
+                                        </HorizontalStackLayout>
+                                    </Frame>
+
+                                    <!-- Frame 2: Comment Icon + Count -->
+                                    <Frame Grid.Column="1"
+                                           BackgroundColor="#f5f5f5"
+                                           CornerRadius="25"
+                                           Padding="2"
+                                           HasShadow="False"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start">
+                                        <HorizontalStackLayout Spacing="0" HeightRequest="25">
+                                            <Image Source="comment_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                                            <Label Text="214" FontSize="12" Padding="5, 0, 10, 0" TextColor="#444" VerticalOptions="Center"/>
+                                        </HorizontalStackLayout>
+                                    </Frame>
+
+                                    <!-- Spacer -->
+                                    <BoxView Grid.Column="2" WidthRequest="10" BackgroundColor="Transparent"/>
+
+                                    <!-- Share Icon aligned right -->
+                                    <Frame Grid.Column="4" 
+                                           BackgroundColor="#f5f5f5"
+                                           CornerRadius="25"
+                                           Padding="2"
+                                           HasShadow="False"
+                                           WidthRequest="50"
+                                           HeightRequest="32"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="End">
+                                        <Image Source="share_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                                    </Frame>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                    
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <views:BottomNavBar Grid.Row="1" />
+    </Grid>
+</ContentPage>

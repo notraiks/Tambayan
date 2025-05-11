@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Tambayan.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Tambayan"
+    Shell.FlyoutBehavior="Flyout"
+    Title="Tambayan">
+
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate local:Login}"
+        Route="Login" />
+
+    
+    <ShellContent
+        Title="Register"
+        ContentTemplate="{DataTemplate local:Register}"
+        Route="Register"
+        IsVisible="False" />
+  
+    <ShellContent
+       Title="Home"
+       ContentTemplate="{DataTemplate local:MainPage}"
+       Route="MainPage" />
+    
+    <ShellContent
+        Title="Profile"
+        ContentTemplate="{DataTemplate local:Profile}"
+        Route="Profile" />
+    
+    <ShellContent
+        Title="General Chat"
+        ContentTemplate="{DataTemplate local:Chat}"
+        Route="Chat" />
+    
+    <ShellContent
+        Title="Notification"
+        ContentTemplate="{DataTemplate local:Notification}"
+        Route="Notification" />
+
+</Shell>

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Tambayan.Views"
+             x:Class="Tambayan.Chat"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- Scrollable Chat List -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="0,20,0,20" Spacing="20">
+
+                <!-- Title Bar with Centered Text and Ellipsis -->
+                <Grid ColumnDefinitions="*,Auto" Padding="20,0,20,10">
+                    <Label Text="Messages"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           Grid.ColumnSpan="2"
+                           TextColor="Black" />
+
+                    <ImageButton Source="ellipsis_icon.png"
+                                 BackgroundColor="Transparent"
+                                 HeightRequest="10"
+                                 WidthRequest="10"
+                                 Padding="0,0,0,10"
+                                 HorizontalOptions="End"
+                                 Grid.Column="1"/>
+                </Grid>
+
+
+                <!-- Search Bar + Icons -->
+                <Grid ColumnDefinitions="1000*,1*,1*" Padding="10,0,10,10" VerticalOptions="Center">
+                    <Border Stroke="Black"
+                            StrokeThickness="2"
+                            StrokeShape="RoundRectangle 10,10,10,10"
+                            HeightRequest="48"
+                            Padding="2,8"
+                            HorizontalOptions="Center"
+                            Grid.Column="0">
+                        <SearchBar Placeholder="Search messages..."
+                                   FontSize="16"
+                                   BackgroundColor="White"
+                                   HeightRequest="45"
+                                   Margin="0,0,10,0"/>
+                    </Border>
+                </Grid>
+
+                <!-- Chat List Items -->
+                <VerticalStackLayout Spacing="15">
+
+                    <!-- Chat Item Template -->
+                    <Frame BackgroundColor="#F5F5F5"
+                           CornerRadius="0" 
+                           HasShadow="False"
+                           Padding="15"
+                           BorderColor="Transparent"> <!-- Invisible border -->
+
+                        <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center">
+                            <!-- Profile Image -->
+                            <Image Source="gus.jpg"
+                                   WidthRequest="50"
+                                   HeightRequest="50"
+                                   Aspect="AspectFill">
+                                <Image.Clip>
+                                    <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25"/>
+                                </Image.Clip>
+                            </Image>
+
+                            <!-- Name + Message -->
+                            <VerticalStackLayout Grid.Column="1" Padding="10,0" Spacing="3">
+                                <!-- Row: Name + Time -->
+                                <HorizontalStackLayout Spacing="5">
+                                    <Label Text="Daisy May Rolling"
+                                           FontSize="14"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"/>
+                                    <Label Text="1h ago"
+                                           FontSize="12"
+                                           TextColor="#999"
+                                           VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                                
+                                <Label Text="Hello! Do you have..."
+                                       FontSize="13"
+                                       TextColor="Gray"
+                                       LineBreakMode="TailTruncation"/>
+                            </VerticalStackLayout>
+
+                            <!-- Notification Dot -->
+                            <Frame Grid.Column="2"
+                                   BackgroundColor="Red"
+                                   CornerRadius="10"
+                                   WidthRequest="20"
+                                   HeightRequest="20"
+                                   Padding="0"
+                                   HasShadow="False"
+                                   VerticalOptions="Start"
+                                   HorizontalOptions="End">
+                                <Label Text="8"
+                                       FontSize="12"
+                                       TextColor="White"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"/>
+                            </Frame>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Repeat Chat Items for other users (Kiven, Frank, Junel) with different image sources and names -->
+
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Bottom Navigation -->
+        <views:BottomNavBar Grid.Row="1" />
+
+    </Grid>
+</ContentPage>
