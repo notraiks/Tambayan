@@ -13,7 +13,7 @@ public partial class MainPage : ContentPage
     }
     private async void OnThreadsClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new Threads());
+        await Shell.Current.GoToAsync("//Threads");
     }
 
 }

@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Tambayan.PostJob"
+            Shell.NavBarIsVisible="False"
+            Title="Post a Job"
+            BackgroundColor="White">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Header Bar -->
+        <Grid ColumnDefinitions="*,Auto"
+              Padding="20,10,20,10"
+              BackgroundColor="White"
+              HeightRequest="60"
+              Grid.Row="0">
+
+            <!-- Back Button (Absolute Left) -->
+            <ImageButton Source="back_icon.png"
+                         BackgroundColor="Transparent"
+                         HeightRequest="24"
+                         WidthRequest="24"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Center"
+                         Clicked="OnBackButtonClicked"
+                         Grid.Column="0"/>
+
+            <!-- Centered Title (Spans all columns for full center alignment) -->
+            <Label Text="Create Job Request"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   Grid.ColumnSpan="2"/>
+
+            <!-- Ellipsis Button (Absolute Right) -->
+            <ImageButton Source="ellipsis_icon.png"
+                         BackgroundColor="Transparent"
+                         HeightRequest="10"
+                         WidthRequest="10"
+                         HorizontalOptions="End"
+                         VerticalOptions="Center"
+                         Grid.Column="1"/>
+        </Grid>
+
+   <ScrollView>
+       <VerticalStackLayout Padding="20" Spacing="20">
+           <Label Text="Post A Job" FontSize="18" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center"/>
+           <!-- Section: Job Information -->
+           <Label Text="Job Information" FontSize="18" FontAttributes="Bold" TextColor="Black" />
+
+
+           <Entry Placeholder="Job Title"
+                  BackgroundColor="#f5f5f5"
+                  TextColor="Black"/>
+           <Entry Placeholder="Location"
+                  BackgroundColor="#f5f5f5"
+                  TextColor="Black"/>
+
+
+           <HorizontalStackLayout Spacing="10">
+               <Picker Title="Job Duration" BackgroundColor="#f5f5f5" TextColor="Black">
+                   <Picker.ItemsSource>
+                       <x:Array Type="{x:Type x:String}">
+                           <x:String>Temporary</x:String>
+                           <x:String>Permanent</x:String>
+                       </x:Array>
+                   </Picker.ItemsSource>
+               </Picker>
+
+
+               <Button Text="Part-time" BackgroundColor="#E5E5E5" TextColor="Black" CornerRadius="10" />
+               <Button Text="Full-time" BackgroundColor="#E5E5E5" TextColor="Black" CornerRadius="10" />
+           </HorizontalStackLayout>
+
+
+           <Entry Placeholder="Salary" Keyboard="Numeric"
+                  BackgroundColor="#f5f5f5"
+                  TextColor="Black"/>
+
+
+           <!-- Section: Description -->
+           <VerticalStackLayout>
+               <Label Text="Description" FontSize="18" FontAttributes="Bold" TextColor="Black"/>
+
+
+               <Frame BorderColor="Black" CornerRadius="3" Padding="0" HasShadow="False">
+                   <Editor Placeholder="Write something..."
+                           BackgroundColor="White"
+                           TextColor="Black"
+                           AutoSize="TextChanges"
+                           HeightRequest="120"
+                           Margin="5"/>
+               </Frame>
+           </VerticalStackLayout>
+          
+          
+          
+           <!-- Section: Requirements -->
+           <Label Text="Requirements" FontSize="18" FontAttributes="Bold" />
+
+
+           <HorizontalStackLayout BackgroundColor="#f5f5f5">
+               <Entry Placeholder="Skill Required" TextColor="Black"/>
+               <Button Text="+ Add" BackgroundColor="#E5E5E5" TextColor="Black" CornerRadius="10" />
+           </HorizontalStackLayout>
+
+
+           <Picker Title="Preferred Experience" BackgroundColor="#f5f5f5" TextColor="Black">
+               <Picker.ItemsSource>
+                   <x:Array Type="{x:Type x:String}">
+                       <x:String>Junior</x:String>
+                       <x:String>Mid-Level</x:String>
+                       <x:String>Senior</x:String>
+                   </x:Array>
+               </Picker.ItemsSource>
+           </Picker>
+
+
+           <Picker Title="Language or Communication" BackgroundColor="#f5f5f5" TextColor="Black">
+               <Picker.ItemsSource>
+                   <x:Array Type="{x:Type x:String}">
+                       <x:String>English</x:String>
+                       <x:String>Tagalog</x:String>
+                       <x:String>Bilingual</x:String>
+                   </x:Array>
+               </Picker.ItemsSource>
+           </Picker>
+
+
+           <Editor Placeholder="Other Notes" AutoSize="TextChanges" HeightRequest="80"
+                   BackgroundColor="#F2F2F2" TextColor="Black" />
+
+
+           <Button Text="Publish Job"
+                   BackgroundColor="#007AFF"
+                   TextColor="White"
+                   CornerRadius="12"
+                   Padding="12"
+                   HorizontalOptions="Center" />
+
+
+       </VerticalStackLayout>
+   </ScrollView></Grid>
+</ContentPage>

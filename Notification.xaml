@@ -34,14 +34,11 @@
        <!-- Notification List -->
        <ScrollView Grid.Row="1">
            <VerticalStackLayout Padding="20" Spacing="10">
-
-
-               <!-- Template Notification Frame -->
-               <!-- Repeat with different image/text/time for each -->
-
-
                <!-- Notification 1 -->
                <Frame BackgroundColor="White" CornerRadius="12" HasShadow="True" Padding="10">
+                   <Frame.GestureRecognizers>
+                       <TapGestureRecognizer Tapped="OnApplicantClicked" />
+                   </Frame.GestureRecognizers>
                    <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center">
                        <AbsoluteLayout WidthRequest="70" HeightRequest="70">
                            <Frame WidthRequest="60" HeightRequest="60"
@@ -51,13 +48,14 @@
                                   HasShadow="False"
                                   AbsoluteLayout.LayoutBounds="0,0,60,60"
                                   AbsoluteLayout.LayoutFlags="None">
-                               <Image Source="noteimage.png" Aspect="AspectFit"/>
+                               <Image Source="applicant.png" Aspect="AspectFit" WidthRequest="75" HeightRequest="75"/>
                            </Frame>
                            <BoxView Color="Red"
                                     WidthRequest="14"
                                     HeightRequest="14"
                                     CornerRadius="7"
-                                    AbsoluteLayout.LayoutBounds="48,48,14,14"
+                                    BackgroundColor="Transparent"
+                                    AbsoluteLayout.LayoutBounds="45,45,12,12"
                                     AbsoluteLayout.LayoutFlags="None" />
                        </AbsoluteLayout>
 
@@ -91,13 +89,14 @@
                                   HasShadow="False"
                                   AbsoluteLayout.LayoutBounds="0,0,60,60"
                                   AbsoluteLayout.LayoutFlags="None">
-                               <Image Source="folder.png" Aspect="AspectFit"/>
+                               <Image Source="application.png" Aspect="AspectFit" WidthRequest="75" HeightRequest="75"/>
                            </Frame>
                            <BoxView Color="Red"
                                     WidthRequest="14"
                                     HeightRequest="14"
                                     CornerRadius="7"
-                                    AbsoluteLayout.LayoutBounds="48,48,14,14"
+                                    BackgroundColor="Transparent"
+                                    AbsoluteLayout.LayoutBounds="45,45,12,12"
                                     AbsoluteLayout.LayoutFlags="None" />
                        </AbsoluteLayout>
 
@@ -131,13 +130,14 @@
                                   HasShadow="False"
                                   AbsoluteLayout.LayoutBounds="0,0,60,60"
                                   AbsoluteLayout.LayoutFlags="None">
-                               <Image Source="notificationimage.png" Aspect="AspectFit"/>
+                               <Image Source="msg_request.png" Aspect="AspectFit" WidthRequest="75" HeightRequest="75"/>
                            </Frame>
                            <BoxView Color="Red"
                                     WidthRequest="14"
                                     HeightRequest="14"
                                     CornerRadius="7"
-                                    AbsoluteLayout.LayoutBounds="48,48,14,14"
+                                    BackgroundColor="Transparent"
+                                    AbsoluteLayout.LayoutBounds="45,45,12,12"
                                     AbsoluteLayout.LayoutFlags="None" />
                        </AbsoluteLayout>
 
@@ -171,19 +171,20 @@
                                   HasShadow="False"
                                   AbsoluteLayout.LayoutBounds="0,0,60,60"
                                   AbsoluteLayout.LayoutFlags="None">
-                               <Image Source="notificationimagetwo.png" Aspect="AspectFit"/>
+                               <Image Source="announcement.png" Aspect="AspectFit" WidthRequest="75" HeightRequest="75"/>
                            </Frame>
                            <BoxView Color="Red"
                                     WidthRequest="14"
                                     HeightRequest="14"
                                     CornerRadius="7"
-                                    AbsoluteLayout.LayoutBounds="48,48,14,14"
+                                    BackgroundColor="Transparent"
+                                    AbsoluteLayout.LayoutBounds="45,45,12,12"
                                     AbsoluteLayout.LayoutFlags="None" />
                        </AbsoluteLayout>
 
 
                        <Label Grid.Column="1"
-                              Text="Your profile was updated successfully."
+                              Text="New update: Improved performance and bug fixes."
                               FontSize="14"
                               VerticalTextAlignment="Center"
                               TextColor="Black"
@@ -211,19 +212,20 @@
                                   HasShadow="False"
                                   AbsoluteLayout.LayoutBounds="0,0,60,60"
                                   AbsoluteLayout.LayoutFlags="None">
-                               <Image Source="notificationimagesix.png" Aspect="AspectFit"/>
+                               <Image Source="job_match.png" Aspect="AspectFit" WidthRequest="95" HeightRequest="95"/>
                            </Frame>
                            <BoxView Color="Red"
                                     WidthRequest="14"
                                     HeightRequest="14"
                                     CornerRadius="7"
-                                    AbsoluteLayout.LayoutBounds="48,48,14,14"
+                                    BackgroundColor="Transparent"
+                                    AbsoluteLayout.LayoutBounds="45,45,12,12"
                                     AbsoluteLayout.LayoutFlags="None" />
                        </AbsoluteLayout>
 
 
                        <Label Grid.Column="1"
-                              Text="You reached your weekly task goal!"
+                              Text="New job posted: Matches your skills “Setting-up Online Shop...”"
                               FontSize="14"
                               VerticalTextAlignment="Center"
                               TextColor="Black"
@@ -251,19 +253,60 @@
                                   HasShadow="False"
                                   AbsoluteLayout.LayoutBounds="0,0,60,60"
                                   AbsoluteLayout.LayoutFlags="None">
-                               <Image Source="notificationimagethree.png" Aspect="AspectFit"/>
+                               <Image Source="comment.png" Aspect="AspectFit" WidthRequest="75" HeightRequest="75"/>
                            </Frame>
                            <BoxView Color="Red"
                                     WidthRequest="14"
                                     HeightRequest="14"
                                     CornerRadius="7"
-                                    AbsoluteLayout.LayoutBounds="48,48,14,14"
+                                    BackgroundColor="Transparent"
+                                    AbsoluteLayout.LayoutBounds="45,45,12,12"
                                     AbsoluteLayout.LayoutFlags="None" />
                        </AbsoluteLayout>
 
 
                        <Label Grid.Column="1"
-                              Text="Someone commented on your post."
+                              Text="Kiven commented on your post: “Lorem ipsum...”"
+                              FontSize="14"
+                              VerticalTextAlignment="Center"
+                              TextColor="Black"
+                              Margin="10,0,0,0" />
+
+
+                       <Label Grid.Column="2"
+                              Text="1w ago"
+                              FontSize="12"
+                              TextColor="Gray"
+                              VerticalOptions="Start"
+                              HorizontalOptions="End" />
+                   </Grid>
+               </Frame>
+               
+               <!-- Notification 7 -->
+               <Frame BackgroundColor="White" CornerRadius="12" HasShadow="True" Padding="10">
+                   <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center">
+                       <AbsoluteLayout WidthRequest="70" HeightRequest="70">
+                           <Frame WidthRequest="60" HeightRequest="60"
+                                  CornerRadius="30"
+                                  BackgroundColor="#EEEEEE"
+                                  Padding="8"
+                                  HasShadow="False"
+                                  AbsoluteLayout.LayoutBounds="0,0,60,60"
+                                  AbsoluteLayout.LayoutFlags="None">
+                               <Image Source="liked_post.png" Aspect="AspectFit" WidthRequest="75" HeightRequest="75"/>
+                           </Frame>
+                           <BoxView Color="Red"
+                                    WidthRequest="14"
+                                    HeightRequest="14"
+                                    CornerRadius="7"
+                                    BackgroundColor="Transparent"
+                                    AbsoluteLayout.LayoutBounds="45,45,12,12"
+                                    AbsoluteLayout.LayoutFlags="None" />
+                       </AbsoluteLayout>
+
+
+                       <Label Grid.Column="1"
+                              Text="Junel liked your post: “Affordable tools for beginners...“ "
                               FontSize="14"
                               VerticalTextAlignment="Center"
                               TextColor="Black"

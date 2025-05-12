@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tambayan.UserChat"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White"
+             Padding="0">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Header -->
+        <Grid Row="0" Padding="15,15, 15, 10" BackgroundColor="White">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <ImageButton Source="back_icon.png"
+                       HeightRequest="40"
+                       WidthRequest="40"
+                       Clicked="OnBackButtonClicked"
+                       VerticalOptions="Center"/>
+                
+                <HorizontalStackLayout Grid.Column="1" Spacing="10" VerticalOptions="Center">
+                    <Image Source="gus.jpg"
+                           WidthRequest="45"
+                           HeightRequest="45"
+                           Aspect="AspectFill">
+                        <Image.Clip>
+                            <EllipseGeometry Center="22.5,22.5" RadiusX="22.5" RadiusY="22.5"/>
+                        </Image.Clip>
+                    </Image>
+                    <VerticalStackLayout>
+                        <Label Text="Daisy May Rolling" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                        <Label Text="Housekeeping" FontSize="13" TextColor="Gray"/>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+
+                <Image Source="ellipsis_icon.png"
+                       Grid.Column="2"
+                       HeightRequest="24"
+                       WidthRequest="24"
+                       VerticalOptions="Center"
+                       HorizontalOptions="End"/>
+            </Grid>
+        </Grid>
+
+        <!-- Scrollable Chat Area -->
+        <ScrollView x:Name="ChatScrollView" Grid.Row="1" BackgroundColor="#F9F9F9">
+            <VerticalStackLayout x:Name="MessageStack" Padding="15,20" Spacing="15">
+                
+                <!-- Job Card -->
+                        <Frame CornerRadius="20"
+                               Padding="0"
+                               HasShadow="True"
+                               WidthRequest="300"
+                               HeightRequest="240"
+                               IsClippedToBounds="True">
+                            <Grid>
+                                <Image Source="card_bg2.png"
+                                       Aspect="AspectFill"
+                                       Opacity="1"
+                                />
+                                <Grid Padding="10, 10, 10, 0">
+                                    <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*">
+                                        
+                                        <!-- Row 0: User Info + Ellipsis -->
+                                        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start">
+                                            <!-- User Info -->
+                                            <HorizontalStackLayout Grid.Column="0" Spacing="10">
+                                                <Image Source="gus.jpg"
+                                                       WidthRequest="40"
+                                                       HeightRequest="40"
+                                                       Aspect="AspectFill">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                                    </Image.Clip>
+                                                </Image>
+                                                <VerticalStackLayout Spacing="2">
+                                                    <Label Text="Juan Dela Cruz" FontAttributes="Bold" FontSize="14" TextColor="White"/>
+                                                    <Label Text="Foreman" FontSize="12" TextColor="#E5E5E5"/>
+                                                </VerticalStackLayout>
+                                            </HorizontalStackLayout>
+                                        </Grid>
+
+                                        <!-- Row 1: Job Title + Time + Description -->
+                                        <VerticalStackLayout Grid.Row="1" Spacing="5" Padding="0,10">
+                                            <HorizontalStackLayout Spacing="5">
+                                                <Label Text="🛠 Construction Helper Needed" FontAttributes="Bold" FontSize="14" TextColor="White"/>
+                                                <Label Text="2h ago" FontSize="12" TextColor="#E5E5E5" VerticalOptions="Center"/>
+                                            </HorizontalStackLayout>
+
+                                            <Label Text="Assist with basic house construction. Meals included. Prior experience preferred."
+                                                   FontSize="13"
+                                                   TextColor="White"
+                                                   LineBreakMode="TailTruncation"/>
+                                        </VerticalStackLayout>
+
+                                        <!-- Row 2: Skills Section (Moved above Info Badges) -->
+                                        <FlexLayout Grid.Row="2"
+                                                    Wrap="Wrap"
+                                                    Direction="Row"
+                                                    JustifyContent="Start"
+                                                    AlignItems="Center"
+                                                    Margin="0,0,0,0">
+                                            <!-- Inline Label + Skills -->
+                                            <Label Text="🏷 Skills:" FontSize="12" FontAttributes="Bold" TextColor="White" Margin="0,0,5,5"/>
+            
+                                            <!-- Skills Badges -->
+                                            <Frame Padding="10,5"
+                                                   BorderColor="Transparent"
+                                                   Margin="0,0,5,5"
+                                                   CornerRadius="12"
+                                                   BackgroundColor="#004CFF"
+                                                   HasShadow="False">
+                                                <Label Text="Carpentry" FontSize="12" TextColor="White"/>
+                                            </Frame>
+                                            <Frame Padding="10,5"
+                                                   BorderColor="Transparent"
+                                                   Margin="0,0,5,5"
+                                                   CornerRadius="12"
+                                                   BackgroundColor="#004CFF"
+                                                   HasShadow="False">
+                                                <Label Text="Teamwork" FontSize="12" TextColor="White"/>
+                                            </Frame>
+                                        </FlexLayout>
+                                        
+                                        <!-- Row 3: Info Badges (Now below Skills) -->
+                                        <Grid Grid.Row="3" RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto" Margin="0,0,0,0">
+                                            <!-- Infos -->
+                                            <FlexLayout  Grid.Row="0" Grid.ColumnSpan="2"
+                                                         Wrap="Wrap"
+                                                         Direction="Row"
+                                                         JustifyContent="Start"
+                                                         AlignItems="Center"
+                                                         Margin="0,5,0,0">
+                                                <Frame Padding="5,2"
+                                                       Margin="0,5,5,5"
+                                                       BorderColor="Transparent"
+                                                       CornerRadius="12"
+                                                       BackgroundColor="#F0F0F0"
+                                                       HasShadow="False">
+                                                    <Label Text="📍 Consolacion" FontSize="12" TextColor="#444"/>
+                                                </Frame>
+                                                <Frame Padding="5,2"
+                                                       Margin="0,5,5,5"
+                                                       BorderColor="Transparent"
+                                                       CornerRadius="12"
+                                                       BackgroundColor="#F0F0F0"
+                                                       HasShadow="False">
+                                                    <Label Text="⏱ Full-Time" FontSize="12" TextColor="#444"/>
+                                                </Frame>
+                                                <Frame Padding="5,2"
+                                                       Margin="0,5,5,5"
+                                                       BorderColor="Transparent"
+                                                       CornerRadius="12"
+                                                       BackgroundColor="#F0F0F0"
+                                                       HasShadow="False">
+                                                    <Label Text="📆 2 Weeks" FontSize="12" TextColor="#444"/>
+                                                </Frame>
+                                            </FlexLayout>
+
+                                            <!-- Salary Highlight -->
+                                            <Frame Grid.Row="1" Grid.Column="1"
+                                                   BorderColor="Transparent"
+                                                   Padding="8,4"
+                                                   BackgroundColor="#615ECC"
+                                                   CornerRadius="10"
+                                                   HasShadow="False"
+                                                   VerticalOptions="Center"
+                                                   Margin="0,10,0,0">
+                                                <Label Text="💰 ₱600/day"
+                                                       FontSize="13"
+                                                       FontAttributes="Bold"
+                                                       TextColor="White"/>
+                                            </Frame>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+
+                <!-- Sender Message -->
+                <VerticalStackLayout HorizontalOptions="End">
+                    <Frame BackgroundColor="#007AFF" Padding="12" CornerRadius="15" HasShadow="False" WidthRequest="270">
+                        <Label Text="Hi po! I'm interested in your job post: [Setting-up Online Shop]. Please check my profile and sample work. Hoping to hear from you po!"
+                               TextColor="White"
+                               FontSize="14"
+                               LineBreakMode="WordWrap"/>
+                    </Frame>
+                    <Label Text="1h ago" FontSize="11" TextColor="Gray" HorizontalOptions="End" Margin="5,0,0,0"/>
+                </VerticalStackLayout>
+
+                <!-- Receiver Message -->
+                <VerticalStackLayout HorizontalOptions="Start">
+                    <Frame BackgroundColor="#F0F4FF" Padding="12" CornerRadius="15" HasShadow="False" WidthRequest="270">
+                        <Label Text="Hello! Do you have appropriate equipments for the job? If not I can provide one."
+                               TextColor="Black"
+                               FontSize="14"
+                               LineBreakMode="WordWrap"/>
+                    </Frame>
+                    <Label Text="Just Now" FontSize="11" TextColor="Gray" HorizontalOptions="Start" Margin="5,0,0,0"/>
+                </VerticalStackLayout>
+                
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Message Input Bar -->
+        <Frame Grid.Row="2"
+               BackgroundColor="#F8F8F8"
+               Padding="10,6"
+               HasShadow="False"
+               BorderColor="#E0E0E0"
+               CornerRadius="0">
+
+            <Grid ColumnDefinitions="*,Auto,Auto,Auto" VerticalOptions="Center">
+        
+                <Entry x:Name="MessageEntry"
+                       Grid.Column="0"
+                       Placeholder="Type a message..."
+                       FontSize="14"
+                       BackgroundColor="White"
+                       HeightRequest="44"
+                       VerticalTextAlignment="Center"
+                       HorizontalOptions="FillAndExpand"
+                       Margin="0"
+                       TextChanged="OnEntryTextChanged">
+                    <Entry.Shadow>
+                        <Shadow Brush="#00000010" Offset="0,1" Radius="2" />
+                    </Entry.Shadow>
+                </Entry>
+
+                <ImageButton Grid.Column="1"
+                             Source="link_icon.png"
+                             BackgroundColor="Transparent"
+                             HeightRequest="20"
+                             WidthRequest="20"
+                             Margin="6,0"
+                             VerticalOptions="Center"
+                             Clicked="OnLinkClicked"/>
+
+                <ImageButton Grid.Column="2"
+                             Source="camera_icon.png"
+                             BackgroundColor="Transparent"
+                             HeightRequest="20"
+                             WidthRequest="20"
+                             Margin="6,0"
+                             VerticalOptions="Center"
+                             Clicked="OnCameraClicked"/>
+                
+                <ImageButton Grid.Column="3"
+                             Source="send_icon.png"
+                             BackgroundColor="Transparent"
+                             HeightRequest="20"
+                             WidthRequest="20"
+                             Margin="6,0"
+                             VerticalOptions="Center"
+                             Clicked="OnSendClicked"/>
+            </Grid>
+        </Frame>
+    </Grid>
+</ContentPage>

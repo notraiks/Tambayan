@@ -3,193 +3,324 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Tambayan.DetailsPage"
              Shell.NavBarIsVisible="False"
+             Loaded="OnPageLoaded"
              BackgroundColor="White"
              Padding="0">
 
+
     <Grid RowDefinitions="Auto,*,Auto">
 
-        <!-- (Row 0) Custom Header Bar -->
-        <Grid HeightRequest="60" Padding="20,0"
+        <!-- Header Bar -->
+        <Grid ColumnDefinitions="*,Auto"
+              Padding="20,10,20,10"
               BackgroundColor="White"
-              ColumnDefinitions="Auto,*,Auto"
-              VerticalOptions="Start"
-              HorizontalOptions="FillAndExpand"
+              HeightRequest="60"
               Grid.Row="0">
-            
-            <!-- Back Button (Now functional) -->
+
+            <!-- Back Button (Absolute Left) -->
             <ImageButton Source="back_icon.png"
+                         BackgroundColor="Transparent"
                          HeightRequest="24"
                          WidthRequest="24"
-                         BackgroundColor="Transparent"
-                         VerticalOptions="Center"
                          HorizontalOptions="Start"
-                         Clicked="OnBackButtonClicked"/>
+                         VerticalOptions="Center"
+                         Clicked="OnBackButtonClicked"
+                         Grid.Column="0"/>
 
-            <!-- Title -->
+            <!-- Centered Title (Spans all columns for full center alignment) -->
             <Label Text="Job Details"
-                   Grid.Column="1"
                    FontSize="18"
                    FontAttributes="Bold"
+                   TextColor="Black"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
-                   TextColor="Black"/>
+                   HorizontalTextAlignment="Center"
+                   Grid.ColumnSpan="2"/>
 
-            <!-- Ellipsis Button -->
+            <!-- Ellipsis Button (Absolute Right) -->
             <ImageButton Source="ellipsis_icon.png"
-                         Grid.Column="2"
-                         HeightRequest="24"
-                         WidthRequest="24"
                          BackgroundColor="Transparent"
+                         HeightRequest="10"
+                         WidthRequest="10"
+                         HorizontalOptions="End"
                          VerticalOptions="Center"
-                         HorizontalOptions="End"/>
+                         Grid.Column="1"/>
         </Grid>
-
-        <!-- (Row 1) Main Scrollable Content -->
+        
+        <!-- Main Scrollable Content -->
         <ScrollView Grid.Row="1">
-            <StackLayout Padding="20" Spacing="20">
+            <VerticalStackLayout Padding="20" Spacing="20">
 
-                <!-- Job Title and Meta -->
-                <StackLayout>
-                    <Label Text="Online Shop Setup Assistant"
-                           FontSize="20"
-                           FontAttributes="Bold"
-                           TextColor="Black"/>
-                    <Label Text="Toledo City, Cebu"
-                           FontSize="14"
-                           TextColor="Gray"
-                           Margin="0,2,0,0"/>
-                    <FlexLayout Direction="Row" Wrap="NoWrap" Margin="0,5,0,0" AlignItems="Center">
-                        <Frame BackgroundColor="#F5F5F5"
-                               Padding="5,2"
-                               CornerRadius="10"
-                               HasShadow="False">
-                            <Label Text="Project-based"
-                                   FontSize="12"
-                                   TextColor="Black"/>
-                        </Frame>
-                        <Frame BackgroundColor="#F5F5F5"
-                               Padding="5,2"
-                               CornerRadius="10"
-                               HasShadow="False">
-                            <Label Text="Skill: Intermediate"
-                                   FontSize="12"
-                                   TextColor="Black"/>
-                        </Frame>
-                        <Frame BackgroundColor="#E0E0FF"
-                               Padding="5,2"
-                               CornerRadius="10"
-                               HasShadow="False">
-                            <Label Text="₱10,000 / Month"
-                                   FontSize="12"
-                                   TextColor="#4A4AFF"/>
-                        </Frame>
-                    </FlexLayout>
-                    <Label Text="Duration: 3 months"
-                           FontSize="12"
-                           TextColor="Gray"
-                           Margin="0,5,0,0"/>
-                </StackLayout>
-
-                <!-- Divider -->
-                <BoxView HeightRequest="1" Color="#E0E0E0" HorizontalOptions="Fill"/>
-
-                <!-- Images Scroll -->
-                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                    <StackLayout Orientation="Horizontal" Spacing="10">
-                        <Image Source="gus.jpg" HeightRequest="100" WidthRequest="100" Aspect="AspectFill"/>
-                        <Image Source="gus.jpg" HeightRequest="100" WidthRequest="100" Aspect="AspectFill"/>
-                        <Image Source="gus.jpg" HeightRequest="100" WidthRequest="100" Aspect="AspectFill"/>
-                    </StackLayout>
-                </ScrollView>
-
-                <!-- Divider -->
-                <BoxView HeightRequest="1" Color="#E0E0E0" HorizontalOptions="Fill"/>
-
-                <!-- Employer Profile -->
-                <Grid ColumnDefinitions="Auto,*" VerticalOptions="Center">
-                    <Border Stroke="#CCCCCC"
-                            StrokeThickness="0"
-                            StrokeShape="RoundRectangle 12,12,12,12"
-                            Padding="0"
-                            Margin="0,0,10,0">
-                        <Image Source="gus.jpg"
-                               HeightRequest="50"
-                               WidthRequest="50"
-                               Aspect="AspectFill">
-                            <Image.Clip>
-                                <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
-                            </Image.Clip>
-                        </Image>
-                    </Border>
-                    <StackLayout Grid.Column="1" VerticalOptions="Center">
-                        <Label Text="Daisy May Rolling"
-                               FontSize="16"
+                <!-- Job Overview Card -->
+                <Frame BackgroundColor="#F9F9F9"
+                       CornerRadius="12"
+                       HasShadow="False"
+                       Padding="20"
+                       BorderColor="Transparent">
+                    <VerticalStackLayout Spacing="8" VerticalOptions="CenterAndExpand">
+                        <HorizontalStackLayout Spacing="5">
+                        <Label Text="Setting-up Online Shop"
+                               FontSize="18"
                                FontAttributes="Bold"
                                TextColor="Black"/>
-                        <Label Text="Housekeeping"
-                               FontSize="14"
-                               TextColor="Gray"/>
-                    </StackLayout>
-                </Grid>
+                        <Label Text=" • 5 minutes ago"
+                               FontSize="12"
+                               TextColor="#999"
+                               VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout>
+                            <Image Source="location_icon.png" HeightRequest="16" WidthRequest="16"/>
+                            <Label Text="Toledo City, Cebu"
+                                   Padding="5, 0"
+                                   FontSize="14"
+                                   TextColor="#666"/>
+                        </HorizontalStackLayout>
 
+                        <FlexLayout Direction="Row" Wrap="Wrap">
+                            <Frame BackgroundColor="#F0F0F0" Padding="10,10" CornerRadius="25" HasShadow="False" BorderColor="Transparent">
+                                <Label Text="Full-time" FontSize="12" TextColor="#333"/>
+                            </Frame>
+                            <BoxView WidthRequest="3" BackgroundColor="Transparent"/>
+                            <Frame BackgroundColor="#F0F0F0" Padding="10,10" CornerRadius="25" HasShadow="False" BorderColor="Transparent">
+                                <Label Text="Job Duration: 3 months" FontSize="12" TextColor="#333"/>
+                            </Frame>
+                            <BoxView WidthRequest="3" BackgroundColor="Transparent"/>
+                            <Frame BackgroundColor="#615ECC" Padding="18,10" CornerRadius="25" HasShadow="False" BorderColor="Transparent">
+                                <Label Text="₱10,000/hr" FontSize="12" TextColor="White"/>
+                            </Frame>
+                        </FlexLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Grid ColumnDefinitions="*,Auto" Padding="0">
+                    <Label Text="Media"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           Grid.Column="0"
+                           VerticalOptions="Center" />
+                </Grid>
+                <!-- Media Section -->
+                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                    <HorizontalStackLayout Spacing="10">
+                        <Frame CornerRadius="12" HasShadow="False" Padding="0">
+                            <Image Source="carpentry1.jpg"
+                                   HeightRequest="150"
+                                   WidthRequest="150"
+                                   Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame CornerRadius="12" HasShadow="False" Padding="0">
+                            <Image Source="carpentry2.jpg"
+                                   HeightRequest="150"
+                                   WidthRequest="150"
+                                   Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame CornerRadius="12" HasShadow="False" Padding="0">
+                            <Image Source="carpentry3.jpg"
+                                   HeightRequest="150"
+                                   WidthRequest="150"
+                                   Aspect="AspectFill"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+                </ScrollView>
+                
+                <!-- Employer Info -->
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="0,10">
+                    <Image Source="gus.jpg"
+                           HeightRequest="50"
+                           WidthRequest="50"
+                           Aspect="AspectFill">
+                        <Image.Clip>
+                            <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25"/>
+                        </Image.Clip>
+                    </Image>
+                    <VerticalStackLayout Grid.Column="1" Margin="10,0" VerticalOptions="Center">
+                        <Label Text="Daisy May Rolling" FontSize="16" FontAttributes="Bold"/>
+                        <Label Text="Housekeeping" FontSize="14" TextColor="Gray"/>
+                    </VerticalStackLayout>
+                    <ImageButton Source="chat_icon.png"
+                                 Grid.Column="2"
+                                 HeightRequest="24"
+                                 WidthRequest="24"
+                                 BackgroundColor="Transparent"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="End"/>
+                </Grid>
+                
                 <!-- Tab Switcher -->
-                <Grid ColumnDefinitions="*,*" HeightRequest="40">
-                    <Border Stroke="#F2F2F2"
-                            StrokeThickness="0"
-                            StrokeShape="RoundRectangle 10,10,10,10"
-                            BackgroundColor="#F2F2F2"
-                            Margin="2"
-                            Padding="0"
-                            Grid.Column="0">
-                        <Grid>
-                            <Label Text="Description"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"
+                <Frame CornerRadius="25" Padding="3" BackgroundColor="#D9D9D9" BorderColor="Transparent">
+                    <Grid ColumnDefinitions="*,*" HeightRequest="40" Padding="4">
+        
+                        <!-- Description Tab -->
+                        <Border x:Name="DescriptionTab"
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                Stroke="Transparent"
+                                HeightRequest="50"
+                                StrokeShape="RoundRectangle 1000,1000">
+                            <Label x:Name="DescriptionTabLabel"
+                                   Text="Description"
+                                   FontSize="14"
                                    FontAttributes="Bold"
-                                   FontSize="14"
-                                   TextColor="#4A4AFF"/>
-                        </Grid>
-                    </Border>
-
-                    <Border Stroke="#F2F2F2"
-                            StrokeThickness="0"
-                            StrokeShape="RoundRectangle 10,10,10,10"
-                            BackgroundColor="#D9D9D9"
-                            Margin="2"
-                            Padding="0"
-                            Grid.Column="1">
-                        <Grid>
-                            <Label Text="Requirements"
+                                   TextColor="#4A4AFF"
                                    HorizontalOptions="Center"
-                                   VerticalOptions="Center"
-                                   FontSize="14"
-                                   TextColor="Gray"/>
-                        </Grid>
-                    </Border>
-                </Grid>
+                                   VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnTabTapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Border>
 
-                <!-- Job Description -->
-                <StackLayout>
+                        <!-- Requirements Tab -->
+                        <Border x:Name="RequirementsTab"
+                                Grid.Column="1"
+                                BackgroundColor="Transparent"
+                                Stroke="Transparent"
+                                HeightRequest="50"
+                                StrokeShape="RoundRectangle 1000,1000">
+                            <Label x:Name="RequirementsTabLabel"
+                                   Text="Requirements"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="Gray"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnTabTapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Border>
+
+                    </Grid>
+                </Frame>
+
+
+                <!-- Job Description Section -->
+                <VerticalStackLayout x:Name="DescriptionContent" IsVisible="True">
                     <Label Text="About the Job"
                            FontSize="16"
+                           Padding="0, 10"
                            FontAttributes="Bold"
                            TextColor="Black"/>
-                    <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pulvinar at tortor ac finibus..."
+                    <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pulvinar at tortor ac finibus. Sed quis turpis sed erat congue imperdiet..."
                            FontSize="14"
-                           TextColor="Gray"/>
-                </StackLayout>
+                           TextColor="#555"/>
+                </VerticalStackLayout>
 
-            </StackLayout>
+                <!-- Requirements Section -->
+                <VerticalStackLayout x:Name="RequirementsContent" IsVisible="False">
+                    <Label Text="Job Requirements"
+                           FontSize="16"
+                           Padding="0, 10"
+                           FontAttributes="Bold"
+                           TextColor="Black"/>
+                    <Label Text="• Must be proficient in basic ecommerce setup\n• Familiar with Shopee or Lazada backend\n• Able to communicate with seller support\n• Working device and stable internet connection required"
+                           FontSize="14"
+                           TextColor="#555"/>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
         </ScrollView>
 
-        <!-- (Row 2) Apply Now Button -->
-        <Frame Grid.Row="2" Padding="10" BackgroundColor="White" HasShadow="True">
+        <!-- Sticky Apply Now Button -->
+        <Frame x:Name="ApplyNowFrame"
+               Grid.Row="2"
+               Padding="10"
+               HasShadow="True"
+               BackgroundColor="White"
+               BorderColor="Transparent">
             <Button Text="Apply Now"
-                    BackgroundColor="#4A4AFF"
+                    BackgroundColor="#0047FF"
                     TextColor="White"
                     FontAttributes="Bold"
-                    CornerRadius="10"
-                    HeightRequest="50"/>
+                    CornerRadius="12"
+                    HeightRequest="50"
+                    Clicked="OnApplyNowClicked"/>
         </Frame>
+
+        <!-- Overlay Application Form -->
+        <ContentView x:Name="ApplicationFormOverlay"
+                     IsVisible="False"
+                     BackgroundColor="#80000000"
+                     Grid.RowSpan="3"
+                     AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All">
+
+            <Frame BackgroundColor="White"
+                   CornerRadius="25"
+                   Margin="20"
+                   Padding="25"
+                   VerticalOptions="End"
+                   HeightRequest="600"
+                   HasShadow="True">
+
+                <ScrollView>
+                    <VerticalStackLayout Spacing="18">
+
+                        <Grid ColumnDefinitions="*,Auto" Padding="0">
+                            <Label Text="Application"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   Grid.Column="0"
+                                   VerticalOptions="Center" />
+
+                            <!-- Close Button -->
+                            <ImageButton Source="close_icon.png"
+                                         WidthRequest="10"
+                                         HeightRequest="10"
+                                         HorizontalOptions="End"
+                                         BackgroundColor="Transparent"
+                                         Clicked="CloseFormClicked"/>
+                        </Grid>
+                        
+
+                        <!-- Contact Info -->
+                        <Label Text="Contact Info" FontSize="16" FontAttributes="Bold"/>
+                        <Entry Placeholder="Email" Keyboard="Email" />
+                        <Entry Placeholder="Phone Number" Keyboard="Telephone"/>
+                        <HorizontalStackLayout Spacing="8">
+                            <CheckBox/>
+                            <Label Text="Allow employer to contact me via SMS or call"
+                                   FontSize="12"
+                                   VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+
+                        <!-- Resume Upload -->
+                        <Label Text="Resume" FontAttributes="Bold"/>
+                        <StackLayout x:Name="ResumeUploadContainer"/>
+                        
+                        <!-- Media Upload -->
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Media " FontAttributes="Bold"/>
+                                    <Span Text="(Showcase your skills)" FontSize="12" TextColor="Gray"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <StackLayout x:Name="MediaUploadContainer"/>
+                        
+                        <!-- Short Pitch Upload -->
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Short Pitch " FontAttributes="Bold"/>
+                                    <Span Text="(Introduce yourself)" FontSize="12" TextColor="Gray"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <StackLayout x:Name="ShortPitchUploadContainer"/>
+
+                        <!-- Submit Button -->
+                        <Button Text="Submit"
+                                BackgroundColor="#0047FF"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                HeightRequest="50"
+                                CornerRadius="16"
+                                Margin="0,10,0,0"/>
+                    </VerticalStackLayout>
+                </ScrollView>
+
+            </Frame>
+        </ContentView>
     </Grid>
 </ContentPage>

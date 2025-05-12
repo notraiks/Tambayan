@@ -12,4 +12,9 @@ public partial class Notification : ContentPage
     {
         InitializeComponent();
     }
+    
+    private async void OnApplicantClicked(object sender, TappedEventArgs e)
+    {
+        await Navigation.PushAsync(new Applicant());
+    }
 }

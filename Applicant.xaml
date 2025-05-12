@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tambayan.Applicant"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="0">
+
+            <!-- Header Bar -->
+            <Grid ColumnDefinitions="*,Auto"
+                  Padding="20,10,20,10"
+                  BackgroundColor="White"
+                  HeightRequest="60"
+                  Grid.Row="0">
+
+                <!-- Back Button (Absolute Left) -->
+                <ImageButton Source="back_icon.png"
+                             BackgroundColor="Transparent"
+                             HeightRequest="24"
+                             WidthRequest="24"
+                             HorizontalOptions="Start"
+                             VerticalOptions="Center"
+                             Clicked="OnBackButtonClicked"
+                             Grid.Column="0"/>
+
+                <!-- Centered Title (Spans all columns for full center alignment) -->
+                <Label Text="Job Details"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       Grid.ColumnSpan="2"/>
+
+                <!-- Ellipsis Button (Absolute Right) -->
+                <ImageButton Source="ellipsis_icon.png"
+                             BackgroundColor="Transparent"
+                             HeightRequest="24"
+                             WidthRequest="24"
+                             HorizontalOptions="End"
+                             VerticalOptions="Center"
+                             Grid.Column="1"/>
+            </Grid>
+            
+            <VerticalStackLayout Padding="20">
+                <!-- Personal Information -->
+                <Label Text="Personal Information"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       Margin="0,10,20,15" />
+
+                <Grid Padding="20,0,20,15"
+                      RowDefinitions="Auto,Auto"
+                      ColumnDefinitions="Auto,*"
+                      ColumnSpacing="15"
+                      HorizontalOptions="Center">
+
+                    <!-- Profile Picture (clipped to circle) -->
+                    <Image Source="gus.jpg"
+                           HorizontalOptions="Center"
+                           WidthRequest="70"
+                           HeightRequest="70"
+                           Aspect="AspectFill"
+                           Grid.Row="0"
+                           Grid.Column="0">
+                        <Image.Clip>
+                            <EllipseGeometry Center="35,35" RadiusX="35" RadiusY="35" />
+                        </Image.Clip>
+                    </Image>
+
+                    <!-- Ratings and Button Stack -->
+                    <VerticalStackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="Center"                       HorizontalOptions="Center" Spacing="5" Padding="0, 0, 0, 0">
+                        <HorizontalStackLayout Spacing="2">
+                            <Image Source="starfill_icon.png" HeightRequest="30" WidthRequest="30"/>
+                            <Image Source="starfill_icon.png" HeightRequest="30" WidthRequest="30"/>
+                            <Image Source="starfill_icon.png" HeightRequest="30" WidthRequest="30"/>
+                            <Image Source="starfill_icon.png" HeightRequest="30" WidthRequest="30"/>
+                            <Image Source="star_icon.png" HeightRequest="30" WidthRequest="30"/>
+                        </HorizontalStackLayout>
+                        <Label Text="4.2 | 12k Ratings"
+                               FontSize="12"
+                               VerticalOptions="Center"
+                               TextColor="Black"
+                               Margin="30,0,0,0"/>
+                    </VerticalStackLayout>
+
+                    <!-- View Profile Button below, spans both columns -->
+                    <Button Grid.Row="1" Grid.ColumnSpan="2"
+                            Text="View Profile"
+                            BackgroundColor="#0066FF"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="10"
+                            Padding="10,5"
+                            HeightRequest="36"
+                            WidthRequest="380"
+                            HorizontalOptions="Center"
+                            Margin="0,10,0,0"/>
+                </Grid>
+
+
+            <!-- Details -->
+                <!-- Details -->
+                <StackLayout Spacing="10" Padding="20,10,20,0">
+                    <StackLayout Spacing="2">
+                        <Label Text="Name" FontSize="14" TextColor="Gray"/>
+                        <Entry Text="Daisy May Rolling" IsReadOnly="True" />
+                    </StackLayout>
+
+                    <StackLayout Spacing="2">
+                        <Label Text="Address" FontSize="14" TextColor="Gray"/>
+                        <Entry Text="Toledo City, Cebu" IsReadOnly="True" />
+                    </StackLayout>
+
+                    <StackLayout Spacing="2">
+                        <Label Text="Email" FontSize="14" TextColor="Gray"/>
+                        <Entry Text="daisymayrolling@gmail.com" IsReadOnly="True" Keyboard="Email"/>
+                    </StackLayout>
+
+                    <StackLayout Spacing="2">
+                        <Label Text="Phone Number" FontSize="14" TextColor="Gray"/>
+                        <Entry Text="953 802 2681" IsReadOnly="True" Keyboard="Telephone"/>
+                    </StackLayout>
+                </StackLayout>
+
+            <!-- Skills -->
+            <Label Text="Skills" FontSize="16" FontAttributes="Bold" Margin="0,20,0,10"/>
+            <FlexLayout Wrap="Wrap" Direction="Row" AlignItems="Start" JustifyContent="Start">
+                <Frame BackgroundColor="#004CFF" Padding="15,10" CornerRadius="20" Margin="0,0,8,8">
+                    <Label Text="Carpentry" FontSize="13" TextColor="White"/>
+                </Frame>
+                <Frame BackgroundColor="#004CFF" Padding="15,10" CornerRadius="20" Margin="0,0,8,8">
+                    <Label Text="Hardware" FontSize="13" TextColor="White"/>
+                </Frame>
+                <Frame BackgroundColor="#004CFF" Padding="15,10" CornerRadius="20" Margin="0,0,8,8">
+                    <Label Text="Furniture Maker" FontSize="13" TextColor="White"/>
+                </Frame>
+                <Frame BackgroundColor="#004CFF" Padding="15,10" CornerRadius="20" Margin="0,0,8,8">
+                    <Label Text="Architecture" FontSize="13" TextColor="White"/>
+                </Frame>
+            </FlexLayout>
+
+            <!-- Resume -->
+            <Label Text="Resume" FontSize="16" FontAttributes="Bold" Margin="0,20,0,10"/>
+            <Button Text="View File"
+                    BackgroundColor="#7E5BEF"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="40"
+                    WidthRequest="140"
+                    HorizontalOptions="Start"
+                    ImageSource="view_icon.png"/>
+
+            <!-- Media -->
+            <Label Text="Media" FontSize="16" FontAttributes="Bold" Margin="0,20,0,10"/>
+            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout Spacing="10">
+                    <Frame CornerRadius="12" HasShadow="False" Padding="0">
+                        <Image Source="carpentry1.jpg" HeightRequest="120" WidthRequest="120" Aspect="AspectFill"/>
+                    </Frame>
+                    <Frame CornerRadius="12" HasShadow="False" Padding="0">
+                        <Image Source="carpentry2.jpg" HeightRequest="120" WidthRequest="120" Aspect="AspectFill"/>
+                    </Frame>
+                    <Frame CornerRadius="12" HasShadow="False" Padding="0">
+                        <Image Source="carpentry3.jpg" HeightRequest="120" WidthRequest="120" Aspect="AspectFill"/>
+                    </Frame>
+                </HorizontalStackLayout>
+            </ScrollView>
+
+            <!-- Short Pitch -->
+            <Label Text="Short Pitch" FontSize="16" FontAttributes="Bold" Margin="0,20,0,10"/>
+            <Frame HasShadow="False" Padding="0" BackgroundColor="Black" HeightRequest="180" CornerRadius="10">
+                <Grid>
+                    <Image Source="video_placeholder.jpg" Aspect="AspectFill" Opacity="0.6"/>
+                    <Image Source="play_button.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Grid>
+            </Frame>
+
+            <!-- Action Buttons -->
+            <Grid ColumnDefinitions="*,*" Margin="0,30,0,0" ColumnSpacing="10">
+                <Button Text="Decline"
+                        BackgroundColor="Red"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="12"
+                        HeightRequest="50"
+                        Grid.Column="0"/>
+                <Button Text="Hire"
+                        BackgroundColor="#0066FF"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="12"
+                        HeightRequest="50"
+                        Grid.Column="1"/>
+            </Grid>
+
+        </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

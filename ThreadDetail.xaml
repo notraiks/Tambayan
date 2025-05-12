@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tambayan.ThreadDetail"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F1F1F1">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Header Bar (Back and Ellipsis) -->
+        <Grid Grid.Row="0"
+              Padding="20,10,20,10"
+              BackgroundColor="White"
+              HeightRequest="60"
+              ColumnDefinitions="*,Auto">
+            <!-- Back Button -->
+            <ImageButton Source="back_icon.png"
+                         BackgroundColor="Transparent"
+                         HeightRequest="24"
+                         WidthRequest="24"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Center"
+                         Clicked="OnBackButtonClicked"
+                         Grid.Column="0"/>
+
+            <!-- Ellipsis Button -->
+            <ImageButton Source="ellipsis_icon.png"
+                         BackgroundColor="Transparent"
+                         HeightRequest="15"
+                         WidthRequest="15"
+                         HorizontalOptions="End"
+                         VerticalOptions="Center"
+                         Grid.Column="1"/>
+        </Grid>
+
+        <!-- Post Content -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="0,10,0,10" Spacing="15">
+
+                <!-- Thread Post -->
+                <Frame Padding="0" BorderColor="Transparent" HasShadow="True">
+                    <Grid Padding="15">
+                        <Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="*">
+                            <!-- Post Header (User Avatar, Name, Time) -->
+                            <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start" Padding="0, 10">
+                                <HorizontalStackLayout Grid.Column="0" Spacing="10">
+                                    <Image Source="gus.jpg"
+                                           WidthRequest="40"
+                                           HeightRequest="40"
+                                           Aspect="AspectFill">
+                                        <Image.Clip>
+                                            <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                        </Image.Clip>
+                                    </Image>
+                                    <VerticalStackLayout Spacing="2">
+                                        <Label Text="Gustavo Fring" FontAttributes="Bold" FontSize="14" TextColor="Black"/>
+                                        <Label Text="Virtual Assistant" FontSize="12" TextColor="Gray"/>
+                                    </VerticalStackLayout>
+                                </HorizontalStackLayout>
+                            </Grid>
+
+                            <!-- Post Title and Text -->
+                            <VerticalStackLayout Grid.Row="1" Spacing="5" Padding="0, 10">
+                                <HorizontalStackLayout Spacing="5">
+                                    <Label Text="Tips for Beginners [Must Read]" FontAttributes="Bold" FontSize="14" TextColor="Black"/>
+                                    <Label Text="1h ago" FontSize="12" TextColor="Gray" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                                <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pulvinar at tortor ac finibus. Sed quis turpis sed erat congue imperdiet. In cursus lacus vel elit aliquet porttitor"
+                                       FontSize="13"
+                                       TextColor="Black"/>
+                            </VerticalStackLayout>
+
+                            <!-- Reactions and Share -->
+                            <Grid Grid.Row="2" ColumnDefinitions="Auto,Auto,Auto,*,Auto" Padding="0,30,0,0" VerticalOptions="End">
+                                <!-- Like Icon + Count -->
+                                <Frame Grid.Column="0" BackgroundColor="#F5F5F5" CornerRadius="25" Padding="2" Margin="0, 0, 5, 0" HasShadow="False">
+                                    <HorizontalStackLayout Spacing="0" HeightRequest="25">
+                                        <Image Source="heart_icon.png" WidthRequest="20" HeightRequest="20"/>
+                                        <Label Text="108" FontSize="12" Padding="5,0,10,0" TextColor="#444" VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+                                </Frame>
+
+                                <BoxView WidthRequest="50" BackgroundColor="Transparent"/>
+                                
+                                <!-- Comment Icon + Count -->
+                                <Frame Grid.Column="1" BackgroundColor="#F5F5F5" CornerRadius="25" Padding="2" HasShadow="False">
+                                    <HorizontalStackLayout Spacing="0" HeightRequest="25">
+                                        <Image Source="comment_icon.png" WidthRequest="20" HeightRequest="20"/>
+                                        <Label Text="214" FontSize="12" Padding="5,0,10,0" TextColor="#444" VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+                                </Frame>
+
+                                <!-- Spacer -->
+                                <BoxView Grid.Column="2" WidthRequest="10" BackgroundColor="Transparent"/>
+
+                                <!-- Share Icon -->
+                                <Frame Grid.Column="4" BackgroundColor="#F5F5F5" CornerRadius="25" Padding="2" HasShadow="False" WidthRequest="50" HeightRequest="32" VerticalOptions="Center" HorizontalOptions="End">
+                                    <Image Source="share_icon.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+                                </Frame>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Frame>
+                
+                <!-- Replies Section -->
+                <Frame BackgroundColor="White" BorderColor="Transparent" Padding="5, 10" HasShadow="True" Margin="0, 0, 0, -15">
+                    <VerticalStackLayout Spacing="10" x:Name="RepliesStackLayout">
+                        <Label Text="Replies" FontAttributes="Bold" FontSize="16" TextColor="Black" Padding="5, 0"/>
+
+                        <!-- Comment 1 -->
+                        <Grid ColumnDefinitions="Auto, *" RowSpacing="5">
+                            <!-- Avatar -->
+                            <Image Source="gus.jpg" WidthRequest="36" HeightRequest="36" Aspect="AspectFill" Margin="0, 0, 0, 150">
+                                <Image.Clip>
+                                    <EllipseGeometry Center="18,18" RadiusX="18" RadiusY="18"/>
+                                </Image.Clip>
+                            </Image>
+
+                            <!-- Comment Body -->
+                            <VerticalStackLayout Grid.Column="1" Padding="10,0,0,0">
+                                <HorizontalStackLayout Spacing="5">
+                                    <Label Text="Kiven Puso" FontAttributes="Bold" FontSize="14" TextColor="Black"/>
+                                    <Label Text="2h ago" FontSize="12" TextColor="Gray" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                                <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pulvinar at tortor ac finibus. Sed quis turpis sed erat congue imperdiet."
+                                       FontSize="13" TextColor="Black"/>
+                                <HorizontalStackLayout Spacing="20" Padding="0,5,0,0">
+                                    <Label Text="Reply" FontSize="13" TextColor="Gray"/>
+                                    <Image Source="heart_icon.png" WidthRequest="16" HeightRequest="16"/>
+                                </HorizontalStackLayout>
+
+                                <!-- Nested Reply -->
+                                <Grid ColumnDefinitions="Auto,*" Padding="0,10,0,0">
+                                    <!-- Vertical Line -->
+                                    <BoxView WidthRequest="1" BackgroundColor="#DDD" Margin="10,0" />
+
+                                    <!-- Nested Comment -->
+                                    <Grid ColumnDefinitions="Auto,*" Padding="10,0,0,0" >
+                                        <Image Source="gus.jpg" WidthRequest="32" HeightRequest="32" Aspect="AspectFill" Margin="0, 0, 0, 30">
+                                            <Image.Clip>
+                                                <EllipseGeometry Center="16,16" RadiusX="16" RadiusY="16"/>
+                                            </Image.Clip>
+                                        </Image>
+                                        <VerticalStackLayout Grid.Column="1" Padding="10,0,0,0">
+                                            <HorizontalStackLayout Spacing="5">
+                                                <Label Text="Daisy May Rolling" FontAttributes="Bold" FontSize="14" TextColor="Black"/>
+                                                <Label Text="3h ago" FontSize="12" TextColor="Gray" VerticalOptions="Center"/>
+                                            </HorizontalStackLayout>
+                                            <Label Text="Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing elit. Ut pulvinar at tortor ac finibus."
+                                                   FontSize="13" TextColor="Black"/>
+                                            <HorizontalStackLayout Spacing="20" Padding="0,5,0,0">
+                                                <Label Text="Reply" FontSize="13" TextColor="Gray"/>
+                                                <Image Source="heart_icon.png" WidthRequest="16" HeightRequest="16"/>
+                                            </HorizontalStackLayout>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Grid>
+
+                                <!-- View More Replies -->
+                                <Label Text="View 67 replies..." FontSize="13" TextColor="#007AFF" Margin="0,5,0,0"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+                <!-- Write a Reply Section -->
+                <Frame BackgroundColor="White" BorderColor="Transparent" Padding="10" HasShadow="True">
+                    <VerticalStackLayout Spacing="10">
+
+                        <!-- Input Row: Avatar + Entry -->
+                        <Grid ColumnDefinitions="Auto,*" VerticalOptions="Center">
+                            <!-- Avatar -->
+                            <Image Source="gus.jpg"
+                                   WidthRequest="40"
+                                   HeightRequest="40"
+                                   Aspect="AspectFill"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start">
+                                <Image.Clip>
+                                    <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                </Image.Clip>
+                            </Image>
+
+                            <!-- Text Entry -->
+                            <Entry x:Name="CommentEntry"
+                                   Grid.Column="1"
+                                   Placeholder="Write a reply..."
+                                   FontSize="14"
+                                   TextColor="Black"
+                                   VerticalOptions="Center"
+                                   BackgroundColor="#F0F0F0"
+                                   Margin="10,0,0,0"/>
+                        </Grid>
+
+                        <!-- Send Button -->
+                        <Button Text="Send"
+                                HorizontalOptions="End"
+                                VerticalOptions="Center"
+                                Clicked="OnSendButtonClicked"
+                                BackgroundColor="#007AFF"
+                                TextColor="White"
+                                CornerRadius="20"
+                                Padding="15,0"/>
+
+                            </VerticalStackLayout>
+                        </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+        
+    </Grid>
+</ContentPage>

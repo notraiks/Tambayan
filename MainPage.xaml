@@ -71,7 +71,7 @@
                                Padding="0"
                                HasShadow="True"
                                WidthRequest="300"
-                               HeightRequest="230"
+                               HeightRequest="240"
                                IsClippedToBounds="True">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnViewDetailsTapped" />
@@ -113,8 +113,8 @@
                                                    VerticalOptions="Center"
                                                    HorizontalOptions="End">
                                                 <Image Source="ellipsis_icon.png"
-                                                       WidthRequest="40"
-                                                       HeightRequest="40"
+                                                       WidthRequest="20"
+                                                       HeightRequest="20"
                                                        VerticalOptions="Center"/>
                                             </Frame>
                                         </Grid>
@@ -143,19 +143,21 @@
                                             <Label Text="🏷 Skills:" FontSize="12" FontAttributes="Bold" TextColor="White" Margin="0,0,5,5"/>
             
                                             <!-- Skills Badges -->
-                                            <Frame Padding="5,2"
+                                            <Frame Padding="10,5"
+                                                   BorderColor="Transparent"
                                                    Margin="0,0,5,5"
                                                    CornerRadius="12"
-                                                   BackgroundColor="#EAF5FF"
+                                                   BackgroundColor="#004CFF"
                                                    HasShadow="False">
-                                                <Label Text="Carpentry" FontSize="12" TextColor="#0077CC"/>
+                                                <Label Text="Carpentry" FontSize="12" TextColor="White"/>
                                             </Frame>
-                                            <Frame Padding="5,2"
+                                            <Frame Padding="10,5"
+                                                   BorderColor="Transparent"
                                                    Margin="0,0,5,5"
                                                    CornerRadius="12"
-                                                   BackgroundColor="#EAF5FF"
+                                                   BackgroundColor="#004CFF"
                                                    HasShadow="False">
-                                                <Label Text="Teamwork" FontSize="12" TextColor="#0077CC"/>
+                                                <Label Text="Teamwork" FontSize="12" TextColor="White"/>
                                             </Frame>
                                         </FlexLayout>
                                         
@@ -170,6 +172,7 @@
                                                          Margin="0,5,0,0">
                                                 <Frame Padding="5,2"
                                                        Margin="0,5,5,5"
+                                                       BorderColor="Transparent"
                                                        CornerRadius="12"
                                                        BackgroundColor="#F0F0F0"
                                                        HasShadow="False">
@@ -177,6 +180,7 @@
                                                 </Frame>
                                                 <Frame Padding="5,2"
                                                        Margin="0,5,5,5"
+                                                       BorderColor="Transparent"
                                                        CornerRadius="12"
                                                        BackgroundColor="#F0F0F0"
                                                        HasShadow="False">
@@ -184,6 +188,7 @@
                                                 </Frame>
                                                 <Frame Padding="5,2"
                                                        Margin="0,5,5,5"
+                                                       BorderColor="Transparent"
                                                        CornerRadius="12"
                                                        BackgroundColor="#F0F0F0"
                                                        HasShadow="False">
@@ -193,8 +198,9 @@
 
                                             <!-- Salary Highlight -->
                                             <Frame Grid.Row="1" Grid.Column="1"
+                                                   BorderColor="Transparent"
                                                    Padding="8,4"
-                                                   BackgroundColor="#FFF5E0"
+                                                   BackgroundColor="#615ECC"
                                                    CornerRadius="10"
                                                    HasShadow="False"
                                                    VerticalOptions="Center"
@@ -202,7 +208,7 @@
                                                 <Label Text="💰 ₱600/day"
                                                        FontSize="13"
                                                        FontAttributes="Bold"
-                                                       TextColor="#E06A00"/>
+                                                       TextColor="White"/>
                                             </Frame>
                                         </Grid>
                                     </Grid>
@@ -210,12 +216,16 @@
                             </Grid>
                         </Frame>
                         
+                        <!-- Job Card 2 -->
                         <Frame CornerRadius="20"
                                Padding="0"
                                HasShadow="True"
                                WidthRequest="300"
-                               HeightRequest="230"
-                               IsClippedToBounds="True"> 
+                               HeightRequest="240"
+                               IsClippedToBounds="True">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnViewDetailsTapped" />
+                            </Frame.GestureRecognizers> 
                             <Grid>
                                 <Image Source="card_bg2.png"
                                        Aspect="AspectFill"
@@ -253,8 +263,8 @@
                                                    VerticalOptions="Center"
                                                    HorizontalOptions="End">
                                                 <Image Source="ellipsis_icon.png"
-                                                       WidthRequest="40"
-                                                       HeightRequest="40"
+                                                       WidthRequest="20"
+                                                       HeightRequest="20"
                                                        VerticalOptions="Center"/>
                                             </Frame>
                                         </Grid>
@@ -283,19 +293,21 @@
                                             <Label Text="🏷 Skills:" FontSize="12" FontAttributes="Bold" TextColor="White" Margin="0,0,5,5"/>
             
                                             <!-- Skills Badges -->
-                                            <Frame Padding="5,2"
+                                            <Frame Padding="10,5"
+                                                   BorderColor="Transparent"
                                                    Margin="0,0,5,5"
                                                    CornerRadius="12"
-                                                   BackgroundColor="#EAF5FF"
+                                                   BackgroundColor="#004CFF"
                                                    HasShadow="False">
-                                                <Label Text="Carpentry" FontSize="12" TextColor="#0077CC"/>
+                                                <Label Text="Carpentry" FontSize="12" TextColor="White"/>
                                             </Frame>
-                                            <Frame Padding="5,2"
+                                            <Frame Padding="10,5"
+                                                   BorderColor="Transparent"
                                                    Margin="0,0,5,5"
                                                    CornerRadius="12"
-                                                   BackgroundColor="#EAF5FF"
+                                                   BackgroundColor="#004CFF"
                                                    HasShadow="False">
-                                                <Label Text="Teamwork" FontSize="12" TextColor="#0077CC"/>
+                                                <Label Text="Teamwork" FontSize="12" TextColor="White"/>
                                             </Frame>
                                         </FlexLayout>
                                         
@@ -310,6 +322,7 @@
                                                          Margin="0,5,0,0">
                                                 <Frame Padding="5,2"
                                                        Margin="0,5,5,5"
+                                                       BorderColor="Transparent"
                                                        CornerRadius="12"
                                                        BackgroundColor="#F0F0F0"
                                                        HasShadow="False">
@@ -317,6 +330,7 @@
                                                 </Frame>
                                                 <Frame Padding="5,2"
                                                        Margin="0,5,5,5"
+                                                       BorderColor="Transparent"
                                                        CornerRadius="12"
                                                        BackgroundColor="#F0F0F0"
                                                        HasShadow="False">
@@ -324,6 +338,7 @@
                                                 </Frame>
                                                 <Frame Padding="5,2"
                                                        Margin="0,5,5,5"
+                                                       BorderColor="Transparent"
                                                        CornerRadius="12"
                                                        BackgroundColor="#F0F0F0"
                                                        HasShadow="False">
@@ -333,8 +348,9 @@
 
                                             <!-- Salary Highlight -->
                                             <Frame Grid.Row="1" Grid.Column="1"
+                                                   BorderColor="Transparent"
                                                    Padding="8,4"
-                                                   BackgroundColor="#FFF5E0"
+                                                   BackgroundColor="#615ECC"
                                                    CornerRadius="10"
                                                    HasShadow="False"
                                                    VerticalOptions="Center"
@@ -342,7 +358,7 @@
                                                 <Label Text="💰 ₱600/day"
                                                        FontSize="13"
                                                        FontAttributes="Bold"
-                                                       TextColor="#E06A00"/>
+                                                       TextColor="White"/>
                                             </Frame>
                                         </Grid>
                                     </Grid>
@@ -350,12 +366,16 @@
                             </Grid>
                         </Frame>
                         
+                        <!-- Job Card 3 -->
                         <Frame CornerRadius="20"
                                Padding="0"
                                HasShadow="True"
                                WidthRequest="300"
-                               HeightRequest="230"
-                               IsClippedToBounds="True"> 
+                               HeightRequest="240"
+                               IsClippedToBounds="True">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnViewDetailsTapped" />
+                            </Frame.GestureRecognizers> 
                             <Grid>
                                 <Image Source="card_bg2.png"
                                        Aspect="AspectFill"
@@ -393,8 +413,8 @@
                                                    VerticalOptions="Center"
                                                    HorizontalOptions="End">
                                                 <Image Source="ellipsis_icon.png"
-                                                       WidthRequest="40"
-                                                       HeightRequest="40"
+                                                       WidthRequest="20"
+                                                       HeightRequest="20"
                                                        VerticalOptions="Center"/>
                                             </Frame>
                                         </Grid>
@@ -423,19 +443,21 @@
                                             <Label Text="🏷 Skills:" FontSize="12" FontAttributes="Bold" TextColor="White" Margin="0,0,5,5"/>
             
                                             <!-- Skills Badges -->
-                                            <Frame Padding="5,2"
+                                            <Frame Padding="10,5"
+                                                   BorderColor="Transparent"
                                                    Margin="0,0,5,5"
                                                    CornerRadius="12"
-                                                   BackgroundColor="#EAF5FF"
+                                                   BackgroundColor="#004CFF"
                                                    HasShadow="False">
-                                                <Label Text="Carpentry" FontSize="12" TextColor="#0077CC"/>
+                                                <Label Text="Carpentry" FontSize="12" TextColor="White"/>
                                             </Frame>
-                                            <Frame Padding="5,2"
+                                            <Frame Padding="10,5"
+                                                   BorderColor="Transparent"
                                                    Margin="0,0,5,5"
                                                    CornerRadius="12"
-                                                   BackgroundColor="#EAF5FF"
+                                                   BackgroundColor="#004CFF"
                                                    HasShadow="False">
-                                                <Label Text="Teamwork" FontSize="12" TextColor="#0077CC"/>
+                                                <Label Text="Teamwork" FontSize="12" TextColor="White"/>
                                             </Frame>
                                         </FlexLayout>
                                         
@@ -450,6 +472,7 @@
                                                          Margin="0,5,0,0">
                                                 <Frame Padding="5,2"
                                                        Margin="0,5,5,5"
+                                                       BorderColor="Transparent"
                                                        CornerRadius="12"
                                                        BackgroundColor="#F0F0F0"
                                                        HasShadow="False">
@@ -457,6 +480,7 @@
                                                 </Frame>
                                                 <Frame Padding="5,2"
                                                        Margin="0,5,5,5"
+                                                       BorderColor="Transparent"
                                                        CornerRadius="12"
                                                        BackgroundColor="#F0F0F0"
                                                        HasShadow="False">
@@ -464,6 +488,7 @@
                                                 </Frame>
                                                 <Frame Padding="5,2"
                                                        Margin="0,5,5,5"
+                                                       BorderColor="Transparent"
                                                        CornerRadius="12"
                                                        BackgroundColor="#F0F0F0"
                                                        HasShadow="False">
@@ -473,8 +498,9 @@
 
                                             <!-- Salary Highlight -->
                                             <Frame Grid.Row="1" Grid.Column="1"
+                                                   BorderColor="Transparent"
                                                    Padding="8,4"
-                                                   BackgroundColor="#FFF5E0"
+                                                   BackgroundColor="#615ECC"
                                                    CornerRadius="10"
                                                    HasShadow="False"
                                                    VerticalOptions="Center"
@@ -482,7 +508,7 @@
                                                 <Label Text="💰 ₱600/day"
                                                        FontSize="13"
                                                        FontAttributes="Bold"
-                                                       TextColor="#E06A00"/>
+                                                       TextColor="White"/>
                                             </Frame>
                                         </Grid>
                                     </Grid>
@@ -531,8 +557,9 @@
                                     <!-- Ellipsis -->
                                     <Image Source="ellipsis_icon.png"
                                            Grid.Column="2"
-                                           WidthRequest="40"
-                                           HeightRequest="40"
+                                           WidthRequest="20"
+                                           HeightRequest="20"
+                                           Margin="0, 0, 10, 15"
                                            HorizontalOptions="End"
                                            VerticalOptions="Center"/>
                                 </Grid>
@@ -560,19 +587,21 @@
                                     <Label Text="🏷 Skills:" FontSize="12" FontAttributes="Bold" TextColor="#444" Margin="0,0,5,5"/>
     
                                     <!-- Skills Badges -->
-                                    <Frame Padding="5,2"
+                                    <Frame Padding="10,5"
+                                           BorderColor="Transparent"
                                            Margin="0,0,5,5"
                                            CornerRadius="12"
-                                           BackgroundColor="#EAF5FF"
+                                           BackgroundColor="#004CFF"
                                            HasShadow="False">
-                                        <Label Text="Carpentry" FontSize="12" TextColor="#0077CC"/>
+                                        <Label Text="Carpentry" FontSize="12" TextColor="White"/>
                                     </Frame>
-                                    <Frame Padding="5,2"
+                                    <Frame Padding="10,5"
+                                           BorderColor="Transparent"
                                            Margin="0,0,5,5"
                                            CornerRadius="12"
-                                           BackgroundColor="#EAF5FF"
+                                           BackgroundColor="#004CFF"
                                            HasShadow="False">
-                                        <Label Text="Teamwork" FontSize="12" TextColor="#0077CC"/>
+                                        <Label Text="Teamwork" FontSize="12" TextColor="White"/>
                                     </Frame>
                                 </FlexLayout>
                                 
@@ -587,6 +616,7 @@
                                                  Margin="0,5,0,0">
                                         <Frame Padding="5,2"
                                                Margin="0,5,5,5"
+                                               BorderColor="Transparent"
                                                CornerRadius="12"
                                                BackgroundColor="#F0F0F0"
                                                HasShadow="False">
@@ -594,6 +624,7 @@
                                         </Frame>
                                         <Frame Padding="5,2"
                                                Margin="0,5,5,5"
+                                               BorderColor="Transparent"
                                                CornerRadius="12"
                                                BackgroundColor="#F0F0F0"
                                                HasShadow="False">
@@ -601,6 +632,7 @@
                                         </Frame>
                                         <Frame Padding="5,2"
                                                Margin="0,5,5,5"
+                                               BorderColor="Transparent"
                                                CornerRadius="12"
                                                BackgroundColor="#F0F0F0"
                                                HasShadow="False">
@@ -610,8 +642,9 @@
 
                                     <!-- Salary Highlight -->
                                     <Frame Grid.Row="1" Grid.Column="1"
+                                           BorderColor="Transparent"
                                            Padding="8,4"
-                                           BackgroundColor="#FFF5E0"
+                                           BackgroundColor="#615ECC"
                                            CornerRadius="10"
                                            HasShadow="False"
                                            VerticalOptions="Center"
@@ -619,7 +652,7 @@
                                         <Label Text="💰 ₱600/day"
                                                FontSize="13"
                                                FontAttributes="Bold"
-                                               TextColor="#E06A00"/>
+                                               TextColor="White"/>
                                     </Frame>
                                 </Grid>
                             </Grid>
@@ -655,8 +688,9 @@
                                     <!-- Ellipsis -->
                                     <Image Source="ellipsis_icon.png"
                                            Grid.Column="2"
-                                           WidthRequest="30"
-                                           HeightRequest="30"
+                                           WidthRequest="20"
+                                           HeightRequest="20"
+                                           Margin="0, 0, 10, 15"
                                            HorizontalOptions="End"
                                            VerticalOptions="Center"/>
                                 </Grid>
@@ -684,19 +718,21 @@
                                     <Label Text="🏷 Skills:" FontSize="12" FontAttributes="Bold" TextColor="#444" Margin="0,0,5,5"/>
     
                                     <!-- Skills Badges -->
-                                    <Frame Padding="5,2"
+                                    <Frame Padding="10,5"
+                                           BorderColor="Transparent"
                                            Margin="0,0,5,5"
                                            CornerRadius="12"
-                                           BackgroundColor="#EAF5FF"
+                                           BackgroundColor="#004CFF"
                                            HasShadow="False">
-                                        <Label Text="Carpentry" FontSize="12" TextColor="#0077CC"/>
+                                        <Label Text="Carpentry" FontSize="12" TextColor="White"/>
                                     </Frame>
-                                    <Frame Padding="5,2"
+                                    <Frame Padding="10,5"
+                                           BorderColor="Transparent"
                                            Margin="0,0,5,5"
                                            CornerRadius="12"
-                                           BackgroundColor="#EAF5FF"
+                                           BackgroundColor="#004CFF"
                                            HasShadow="False">
-                                        <Label Text="Teamwork" FontSize="12" TextColor="#0077CC"/>
+                                        <Label Text="Teamwork" FontSize="12" TextColor="White"/>
                                     </Frame>
                                 </FlexLayout>
                                 
@@ -711,6 +747,7 @@
                                                  Margin="0,5,0,0">
                                         <Frame Padding="5,2"
                                                Margin="0,5,5,5"
+                                               BorderColor="Transparent"
                                                CornerRadius="12"
                                                BackgroundColor="#F0F0F0"
                                                HasShadow="False">
@@ -718,6 +755,7 @@
                                         </Frame>
                                         <Frame Padding="5,2"
                                                Margin="0,5,5,5"
+                                               BorderColor="Transparent"
                                                CornerRadius="12"
                                                BackgroundColor="#F0F0F0"
                                                HasShadow="False">
@@ -725,6 +763,7 @@
                                         </Frame>
                                         <Frame Padding="5,2"
                                                Margin="0,5,5,5"
+                                               BorderColor="Transparent"
                                                CornerRadius="12"
                                                BackgroundColor="#F0F0F0"
                                                HasShadow="False">
@@ -734,8 +773,9 @@
 
                                     <!-- Salary Highlight -->
                                     <Frame Grid.Row="1" Grid.Column="1"
+                                           BorderColor="Transparent"
                                            Padding="8,4"
-                                           BackgroundColor="#FFF5E0"
+                                           BackgroundColor="#615ECC"
                                            CornerRadius="10"
                                            HasShadow="False"
                                            VerticalOptions="Center"
@@ -743,7 +783,7 @@
                                         <Label Text="💰 ₱600/day"
                                                FontSize="13"
                                                FontAttributes="Bold"
-                                               TextColor="#E06A00"/>
+                                               TextColor="White"/>
                                     </Frame>
                                 </Grid>
                             </Grid>
@@ -779,8 +819,9 @@
                                     <!-- Ellipsis -->
                                     <Image Source="ellipsis_icon.png"
                                            Grid.Column="2"
-                                           WidthRequest="40"
-                                           HeightRequest="40"
+                                           WidthRequest="20"
+                                           HeightRequest="20"
+                                           Margin="0, 0, 10, 15"
                                            HorizontalOptions="End"
                                            VerticalOptions="Center"/>
                                 </Grid>
@@ -808,19 +849,21 @@
                                     <Label Text="🏷 Skills:" FontSize="12" FontAttributes="Bold" TextColor="#444" Margin="0,0,5,5"/>
     
                                     <!-- Skills Badges -->
-                                    <Frame Padding="5,2"
+                                    <Frame Padding="10,5"
+                                           BorderColor="Transparent"
                                            Margin="0,0,5,5"
                                            CornerRadius="12"
-                                           BackgroundColor="#EAF5FF"
+                                           BackgroundColor="#004CFF"
                                            HasShadow="False">
-                                        <Label Text="Carpentry" FontSize="12" TextColor="#0077CC"/>
+                                        <Label Text="Carpentry" FontSize="12" TextColor="White"/>
                                     </Frame>
-                                    <Frame Padding="5,2"
+                                    <Frame Padding="10,5"
+                                           BorderColor="Transparent"
                                            Margin="0,0,5,5"
                                            CornerRadius="12"
-                                           BackgroundColor="#EAF5FF"
+                                           BackgroundColor="#004CFF"
                                            HasShadow="False">
-                                        <Label Text="Teamwork" FontSize="12" TextColor="#0077CC"/>
+                                        <Label Text="Teamwork" FontSize="12" TextColor="White"/>
                                     </Frame>
                                 </FlexLayout>
                                 
@@ -835,6 +878,7 @@
                                                  Margin="0,5,0,0">
                                         <Frame Padding="5,2"
                                                Margin="0,5,5,5"
+                                               BorderColor="Transparent"
                                                CornerRadius="12"
                                                BackgroundColor="#F0F0F0"
                                                HasShadow="False">
@@ -842,6 +886,7 @@
                                         </Frame>
                                         <Frame Padding="5,2"
                                                Margin="0,5,5,5"
+                                               BorderColor="Transparent"
                                                CornerRadius="12"
                                                BackgroundColor="#F0F0F0"
                                                HasShadow="False">
@@ -849,6 +894,7 @@
                                         </Frame>
                                         <Frame Padding="5,2"
                                                Margin="0,5,5,5"
+                                               BorderColor="Transparent"
                                                CornerRadius="12"
                                                BackgroundColor="#F0F0F0"
                                                HasShadow="False">
@@ -858,8 +904,9 @@
 
                                     <!-- Salary Highlight -->
                                     <Frame Grid.Row="1" Grid.Column="1"
+                                           BorderColor="Transparent"
                                            Padding="8,4"
-                                           BackgroundColor="#FFF5E0"
+                                           BackgroundColor="#615ECC"
                                            CornerRadius="10"
                                            HasShadow="False"
                                            VerticalOptions="Center"
@@ -867,7 +914,7 @@
                                         <Label Text="💰 ₱600/day"
                                                FontSize="13"
                                                FontAttributes="Bold"
-                                               TextColor="#E06A00"/>
+                                               TextColor="White"/>
                                     </Frame>
                                 </Grid>
                             </Grid>

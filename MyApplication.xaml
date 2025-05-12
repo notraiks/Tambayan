@@ -1,0 +1,484 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tambayan.MyApplication"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="0">
+
+                <!-- Header Bar -->
+                <Grid ColumnDefinitions="*,Auto"
+                      Padding="20,10,20,10"
+                      BackgroundColor="White"
+                      HeightRequest="60"
+                      Grid.Row="0">
+
+                    <!-- Back Button (Absolute Left) -->
+                    <ImageButton Source="back_icon.png"
+                                 BackgroundColor="Transparent"
+                                 HeightRequest="24"
+                                 WidthRequest="24"
+                                 HorizontalOptions="Start"
+                                 VerticalOptions="Center"
+                                 Clicked="OnBackButtonClicked"
+                                 Grid.Column="0"/>
+
+                    <!-- Centered Title (Spans all columns for full center alignment) -->
+                    <Label Text="My Applications"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           Grid.ColumnSpan="2"/>
+
+                    <!-- Ellipsis Button (Absolute Right) -->
+                    <ImageButton Source="ellipsis_icon.png"
+                                 BackgroundColor="Transparent"
+                                 HeightRequest="1"
+                                 WidthRequest="1"
+                                 HorizontalOptions="End"
+                                 VerticalOptions="Center"
+                                 Grid.Column="1"/>
+                </Grid>
+                
+                <!-- My Application Card Overview -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="20"
+                       Margin="15,10"
+                       Padding="0"
+                       HasShadow="True"
+                       WidthRequest="350"
+                       MinimumHeightRequest="260"
+                       BorderColor="LightGray">
+
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto">
+
+                        <!-- ✅ Status Badge -->
+                        <BoxView Grid.Row="0" Grid.ColumnSpan="3"
+                                 BackgroundColor="#00C853"
+                                 HeightRequest="30"
+                                 CornerRadius="20,20,0,0"/>
+                        <Label Grid.Row="0" Grid.ColumnSpan="3"
+                               Text="Approved"
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               VerticalOptions="Center"
+                               Margin="20,0,0,0"/>
+
+                        <!-- 👤 Profile Picture -->
+                        <Image Grid.Row="1" Grid.Column="0"
+                               Source="gus.jpg"
+                               WidthRequest="50"
+                               HeightRequest="50"
+                               Margin="10,10,10,0"
+                               Aspect="AspectFill"
+                               VerticalOptions="Start">
+                            <Image.Clip>
+                                <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25"/>
+                            </Image.Clip>
+                        </Image>
+
+                        <!-- 🏷 Job Info -->
+                        <VerticalStackLayout Grid.Row="1" Grid.Column="1"
+                                             Spacing="2"
+                                             Padding="0,10,0,0">
+                            <Label Text="House Cleaning"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#222"/>
+                            <Label Text="Daisy May Rolling"
+                                   FontSize="13"
+                                   TextColor="#666"/>
+                        </VerticalStackLayout>
+
+                        <!-- 💬 Chat Icon -->
+                        <ImageButton Grid.Row="1" Grid.Column="2"
+                                     Source="chat_icon.png"
+                                     BackgroundColor="Transparent"
+                                     WidthRequest="28"
+                                     HeightRequest="28"
+                                     Margin="0,15,10,0"
+                                     VerticalOptions="Start"
+                                     HorizontalOptions="End"/>
+
+                        <!-- ℹ️ Info Badges -->
+                        <FlexLayout Grid.Row="2" Grid.ColumnSpan="3"
+                                    Wrap="Wrap"
+                                    Direction="Row"
+                                    JustifyContent="Start"
+                                    AlignItems="Center"
+                                    Margin="15,10,15,0">
+                            <Frame Padding="5,2"
+                                   Margin="0,5,5,5"
+                                   CornerRadius="12"
+                                   BackgroundColor="#F0F0F0"
+                                   HasShadow="False">
+                                <Label Text="📍 Consolacion" FontSize="12" TextColor="#444"/>
+                            </Frame>
+                            <Frame Padding="5,2"
+                                   Margin="0,5,5,5"
+                                   CornerRadius="12"
+                                   BackgroundColor="#F0F0F0"
+                                   HasShadow="False">
+                                <Label Text="⏱ Full-Time" FontSize="12" TextColor="#444"/>
+                            </Frame>
+                            <Frame Padding="5,2"
+                                   Margin="0,5,5,5"
+                                   CornerRadius="12"
+                                   BackgroundColor="#F0F0F0"
+                                   HasShadow="False">
+                                <Label Text="📆 2 Weeks" FontSize="12" TextColor="#444"/>
+                            </Frame>
+                        </FlexLayout>
+
+                        <!-- 📋 Requirements with Check Icons -->
+                        <Grid Grid.Row="3" Grid.ColumnSpan="3"
+                              ColumnDefinitions="*,Auto"
+                              Padding="15,5,15,0">
+
+                            <!-- 📋 Requirements -->
+                            <VerticalStackLayout Grid.Column="0"
+                                                 Spacing="5"
+                                                 VerticalOptions="Start">
+                                <Label Text="Requirements:"
+                                       FontSize="13"
+                                       FontAttributes="Bold"
+                                       TextColor="#333"/>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Image Source="check_icon.png" WidthRequest="16" HeightRequest="16"/>
+                                    <Label Text="Contact Information" FontSize="11" TextColor="#333"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Image Source="check_icon.png" WidthRequest="16" HeightRequest="16"/>
+                                    <Label Text="Resume" FontSize="11" TextColor="#333"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Image Source="check_icon.png" WidthRequest="16" HeightRequest="16"/>
+                                    <Label Text="Media" FontSize="11" TextColor="#333"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Image Source="check_icon.png" WidthRequest="16" HeightRequest="16"/>
+                                    <Label Text="Short Pitch" FontSize="11" TextColor="#333"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+
+                            <!-- ✅ Skill Match & 💰 Salary -->
+                            <VerticalStackLayout Grid.Column="0"
+                                                 Spacing="5"
+                                                 HorizontalOptions="End"
+                                                 VerticalOptions="Center">
+                                <!-- Salary -->
+                                <Frame BackgroundColor="#EDE7F6"
+                                       Margin="0,70, 0, 0"
+                                       Padding="10,5"
+                                       CornerRadius="12"
+                                       HasShadow="False"
+                                       HorizontalOptions="Center">
+                                    <Label Text="₱10,000/hr"
+                                           FontSize="13"
+                                           FontAttributes="Bold"
+                                           TextColor="#6A1B9A"/>
+                                </Frame>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Grid>
+                </Frame>
+                
+                <!-- Card 2 -->
+                <Frame BackgroundColor="White"
+                           CornerRadius="20"
+                           Margin="15,10"
+                           Padding="0"
+                           HasShadow="True"
+                           WidthRequest="350"
+                           MinimumHeightRequest="260"
+                           BorderColor="LightGray">
+
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto">
+
+                        <!-- ✅ Status Badge -->
+                        <BoxView Grid.Row="0" Grid.ColumnSpan="3"
+                                 BackgroundColor="Red"
+                                 HeightRequest="30"
+                                 CornerRadius="20,20,0,0"/>
+                        <Label Grid.Row="0" Grid.ColumnSpan="3"
+                               Text="Declined"
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               VerticalOptions="Center"
+                               Margin="20,0,0,0"/>
+
+                        <!-- 👤 Profile Picture -->
+                        <Image Grid.Row="1" Grid.Column="0"
+                               Source="gus.jpg"
+                               WidthRequest="50"
+                               HeightRequest="50"
+                               Margin="10,10,10,0"
+                               Aspect="AspectFill"
+                               VerticalOptions="Start">
+                            <Image.Clip>
+                                <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25"/>
+                            </Image.Clip>
+                        </Image>
+
+                        <!-- 🏷 Job Info -->
+                        <VerticalStackLayout Grid.Row="1" Grid.Column="1"
+                                             Spacing="2"
+                                             Padding="0,10,0,0">
+                            <Label Text="House Cleaning"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#222"/>
+                            <Label Text="Daisy May Rolling"
+                                   FontSize="13"
+                                   TextColor="#666"/>
+                        </VerticalStackLayout>
+
+                        <!-- 💬 Chat Icon -->
+                        <ImageButton Grid.Row="1" Grid.Column="2"
+                                     Source="chat_icon.png"
+                                     BackgroundColor="Transparent"
+                                     WidthRequest="28"
+                                     HeightRequest="28"
+                                     Margin="0,15,10,0"
+                                     VerticalOptions="Start"
+                                     HorizontalOptions="End"/>
+
+                        <!-- ℹ️ Info Badges -->
+                        <FlexLayout Grid.Row="2" Grid.ColumnSpan="3"
+                                    Wrap="Wrap"
+                                    Direction="Row"
+                                    JustifyContent="Start"
+                                    AlignItems="Center"
+                                    Margin="15,10,15,0">
+                            <Frame Padding="5,2"
+                                   Margin="0,5,5,5"
+                                   CornerRadius="12"
+                                   BackgroundColor="#F0F0F0"
+                                   HasShadow="False">
+                                <Label Text="📍 Consolacion" FontSize="12" TextColor="#444"/>
+                            </Frame>
+                            <Frame Padding="5,2"
+                                   Margin="0,5,5,5"
+                                   CornerRadius="12"
+                                   BackgroundColor="#F0F0F0"
+                                   HasShadow="False">
+                                <Label Text="⏱ Full-Time" FontSize="12" TextColor="#444"/>
+                            </Frame>
+                            <Frame Padding="5,2"
+                                   Margin="0,5,5,5"
+                                   CornerRadius="12"
+                                   BackgroundColor="#F0F0F0"
+                                   HasShadow="False">
+                                <Label Text="📆 2 Weeks" FontSize="12" TextColor="#444"/>
+                            </Frame>
+                        </FlexLayout>
+
+                        <!-- 📋 Requirements with Check Icons -->
+                        <Grid Grid.Row="3" Grid.ColumnSpan="3"
+                              ColumnDefinitions="*,Auto"
+                              Padding="15,5,15,0">
+
+                            <!-- 📋 Requirements -->
+                            <VerticalStackLayout Grid.Column="0"
+                                                 Spacing="5"
+                                                 VerticalOptions="Start">
+                                <Label Text="Requirements:"
+                                       FontSize="13"
+                                       FontAttributes="Bold"
+                                       TextColor="#333"/>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Image Source="check_icon.png" WidthRequest="16" HeightRequest="16"/>
+                                    <Label Text="Contact Information" FontSize="11" TextColor="#333"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Image Source="close_icon.png" WidthRequest="16" HeightRequest="16"/>
+                                    <Label Text="Resume" FontSize="11" TextColor="#333"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Image Source="check_icon.png" WidthRequest="16" HeightRequest="16"/>
+                                    <Label Text="Media" FontSize="11" TextColor="#333"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Image Source="check_icon.png" WidthRequest="16" HeightRequest="16"/>
+                                    <Label Text="Short Pitch" FontSize="11" TextColor="#333"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+
+                            <!-- ✅ Skill Match & 💰 Salary -->
+                            <VerticalStackLayout Grid.Column="0"
+                                                 Spacing="5"
+                                                 HorizontalOptions="End"
+                                                 VerticalOptions="Center">
+                                <!-- Salary -->
+                                <Frame BackgroundColor="#EDE7F6"
+                                       Margin="0,70, 0, 0"
+                                       Padding="10,5"
+                                       CornerRadius="12"
+                                       HasShadow="False"
+                                       HorizontalOptions="Center">
+                                    <Label Text="₱10,000/hr"
+                                           FontSize="13"
+                                           FontAttributes="Bold"
+                                           TextColor="#6A1B9A"/>
+                                </Frame>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Grid>
+                </Frame>
+                
+                <!-- Card 3 -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="20"
+                       Margin="15,10"
+                       Padding="0"
+                       HasShadow="True"
+                       WidthRequest="350"
+                       MinimumHeightRequest="260"
+                       BorderColor="LightGray">
+
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto">
+
+                    <!-- ✅ Status Badge -->
+                    <BoxView Grid.Row="0" Grid.ColumnSpan="3"
+                             BackgroundColor="Black"
+                             HeightRequest="30"
+                             CornerRadius="20,20,0,0"/>
+                    <Label Grid.Row="0" Grid.ColumnSpan="3"
+                           Text="Pending"
+                           FontSize="13"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           VerticalOptions="Center"
+                           Margin="20,0,0,0"/>
+
+                    <!-- 👤 Profile Picture -->
+                    <Image Grid.Row="1" Grid.Column="0"
+                           Source="gus.jpg"
+                           WidthRequest="50"
+                           HeightRequest="50"
+                           Margin="10,10,10,0"
+                           Aspect="AspectFill"
+                           VerticalOptions="Start">
+                        <Image.Clip>
+                            <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25"/>
+                        </Image.Clip>
+                    </Image>
+
+                    <!-- 🏷 Job Info -->
+                    <VerticalStackLayout Grid.Row="1" Grid.Column="1"
+                                         Spacing="2"
+                                         Padding="0,10,0,0">
+                        <Label Text="House Cleaning"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="#222"/>
+                        <Label Text="Daisy May Rolling"
+                               FontSize="13"
+                               TextColor="#666"/>
+                    </VerticalStackLayout>
+
+                    <!-- 💬 Chat Icon -->
+                    <ImageButton Grid.Row="1" Grid.Column="2"
+                                 Source="chat_icon.png"
+                                 BackgroundColor="Transparent"
+                                 WidthRequest="28"
+                                 HeightRequest="28"
+                                 Margin="0,15,10,0"
+                                 VerticalOptions="Start"
+                                 HorizontalOptions="End"/>
+
+                    <!-- ℹ️ Info Badges -->
+                    <FlexLayout Grid.Row="2" Grid.ColumnSpan="3"
+                                Wrap="Wrap"
+                                Direction="Row"
+                                JustifyContent="Start"
+                                AlignItems="Center"
+                                Margin="15,10,15,0">
+                        <Frame Padding="5,2"
+                               Margin="0,5,5,5"
+                               CornerRadius="12"
+                               BackgroundColor="#F0F0F0"
+                               HasShadow="False">
+                            <Label Text="📍 Consolacion" FontSize="12" TextColor="#444"/>
+                        </Frame>
+                        <Frame Padding="5,2"
+                               Margin="0,5,5,5"
+                               CornerRadius="12"
+                               BackgroundColor="#F0F0F0"
+                               HasShadow="False">
+                            <Label Text="⏱ Full-Time" FontSize="12" TextColor="#444"/>
+                        </Frame>
+                        <Frame Padding="5,2"
+                               Margin="0,5,5,5"
+                               CornerRadius="12"
+                               BackgroundColor="#F0F0F0"
+                               HasShadow="False">
+                            <Label Text="📆 2 Weeks" FontSize="12" TextColor="#444"/>
+                        </Frame>
+                    </FlexLayout>
+
+                    <!-- 📋 Requirements with Check Icons -->
+                    <Grid Grid.Row="3" Grid.ColumnSpan="3"
+                          ColumnDefinitions="*,Auto"
+                          Padding="15,5,15,0">
+
+                        <!-- 📋 Requirements -->
+                        <VerticalStackLayout Grid.Column="0"
+                                             Spacing="5"
+                                             VerticalOptions="Start">
+                            <Label Text="Requirements:"
+                                   FontSize="13"
+                                   FontAttributes="Bold"
+                                   TextColor="#333"/>
+                            <HorizontalStackLayout Spacing="5">
+                                <Image Source="check_icon.png" WidthRequest="16" HeightRequest="16"/>
+                                <Label Text="Contact Information" FontSize="11" TextColor="#333"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="5">
+                                <Image Source="check_icon.png" WidthRequest="16" HeightRequest="16"/>
+                                <Label Text="Resume" FontSize="11" TextColor="#333"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="5">
+                                <Image Source="check_icon.png" WidthRequest="16" HeightRequest="16"/>
+                                <Label Text="Media" FontSize="11" TextColor="#333"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="5">
+                                <Image Source="check_icon.png" WidthRequest="16" HeightRequest="16"/>
+                                <Label Text="Short Pitch" FontSize="11" TextColor="#333"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+
+                        <!-- ✅ Skill Match & 💰 Salary -->
+                        <VerticalStackLayout Grid.Column="0"
+                                             Spacing="5"
+                                             HorizontalOptions="End"
+                                             VerticalOptions="Center">
+                            <!-- Salary -->
+                            <Frame BackgroundColor="#EDE7F6"
+                                   Margin="0,70, 0, 0"
+                                   Padding="10,5"
+                                   CornerRadius="12"
+                                   HasShadow="False"
+                                   HorizontalOptions="Center">
+                                <Label Text="₱10,000/hr"
+                                       FontSize="13"
+                                       FontAttributes="Bold"
+                                       TextColor="#6A1B9A"/>
+                            </Frame>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Grid>
+            </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

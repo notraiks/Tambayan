@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tambayan.Views.AboutMeContent">
+    
+    <VerticalStackLayout Padding="0" Spacing="15">
+                <!-- Bio Section -->
+            <VerticalStackLayout Padding="20,0">
+                <Label Text="Bio" FontSize="16" FontAttributes="Bold" Padding="0, 0, 0, 10"/>
+                <Frame BackgroundColor="#FAFAFA"
+                       CornerRadius="12"
+                       HasShadow="True"
+                       Padding="12">
+                    <Label Text="Hello! I am Gus, former employee of Los Pollos Hermanos. I am hardworking and incredibly detailed. Feel free to reach out!"
+                           FontSize="14"
+                           TextColor="#444"/>
+                </Frame>
+            </VerticalStackLayout>
+
+            <!-- Skills Section -->
+            <VerticalStackLayout Padding="20,0">
+                <Label Text="Skills" FontSize="16" FontAttributes="Bold" Padding="0, 0, 0, 10"/>
+                <FlexLayout Wrap="Wrap" Direction="Row" Margin="0,5,0,0" AlignItems="Start">
+                    <Frame BackgroundColor="#004CFF" Padding="10,10" CornerRadius="20" Margin="0,0,8,8">
+                        <Label Text="Virtual Assistant" FontSize="13" TextColor="White"/>
+                    </Frame>
+                    <Frame BackgroundColor="#004CFF" Padding="10,10" CornerRadius="20" Margin="0,0,8,8">
+                        <Label Text="Content Creator" FontSize="13" TextColor="White"/>
+                    </Frame>
+                    <Frame BackgroundColor="#004CFF" Padding="10,10" CornerRadius="20" Margin="0,0,8,8">
+                        <Label Text="Organizer" FontSize="13" TextColor="White"/>
+                    </Frame>
+                    <Frame BackgroundColor="#004CFF" Padding="20,10" CornerRadius="20" Margin="0,0,8,8">
+                        <Label Text="Web Developer" FontSize="13" TextColor="White"/>
+                    </Frame>
+                </FlexLayout>
+            </VerticalStackLayout>
+
+            <!-- Media Section -->
+            <VerticalStackLayout Padding="20,0">
+                <Label Text="Media" FontSize="16" FontAttributes="Bold" Padding="0, 0, 0, 10"/>
+                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                    <HorizontalStackLayout Spacing="10">
+                        <Frame CornerRadius="12" HasShadow="False" Padding="0">
+                            <Image Source="carpentry1.jpg"
+                                   HeightRequest="150"
+                                   WidthRequest="150"
+                                   Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame CornerRadius="12" HasShadow="False" Padding="0">
+                            <Image Source="carpentry2.jpg"
+                                   HeightRequest="150"
+                                   WidthRequest="150"
+                                   Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame CornerRadius="12" HasShadow="False" Padding="0">
+                            <Image Source="carpentry3.jpg"
+                                   HeightRequest="150"
+                                   WidthRequest="150"
+                                   Aspect="AspectFill"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+                </ScrollView>
+            </VerticalStackLayout>
+
+            <!-- Education Section -->
+            <VerticalStackLayout Padding="20,10">
+                <Label Text="Education" FontSize="16" FontAttributes="Bold" Padding="0, 0, 0, 10"/>
+
+                <Frame BorderColor="#E0E0E0" CornerRadius="12" Padding="10" HasShadow="False">
+                    <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto" ColumnSpacing="10">
+
+                        <!-- Circular Frame with Elliptical Clipped Icon -->
+                        <Frame WidthRequest="60" HeightRequest="60"
+                               Padding="5"
+                               CornerRadius="30"
+                               BackgroundColor="#DADADA"
+                               HasShadow="False"
+                               VerticalOptions="Center"
+                               Grid.RowSpan="2">
+                            <Image Source="graduate_icon.png"
+                                   WidthRequest="60" HeightRequest="60"
+                                   Aspect="AspectFill"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center">
+                                <Image.Clip>
+                                    <EllipseGeometry Center="30,30" RadiusX="30" RadiusY="30"/>
+                                </Image.Clip>
+                            </Image>
+                        </Frame>
+
+                        <!-- School and Course Info -->
+                        <Label Text="Mandaue High School"
+                               FontAttributes="Bold"
+                               FontSize="15"
+                               Grid.Column="1"/>
+                        <Label Text="TVET - Carpentry&#x0a;2020–2024"
+                               FontSize="13"
+                               TextColor="#777"
+                               Grid.Column="1"
+                               Grid.Row="1"/>
+                    </Grid>
+                </Frame>
+            </VerticalStackLayout>
+
+            <!-- Experience Section -->
+            <VerticalStackLayout Padding="20,0">
+                <Label Text="Experience" FontSize="16" FontAttributes="Bold" Padding="0, 0, 0, 10"/>
+                <Frame BorderColor="#E0E0E0" CornerRadius="12" Padding="10" HasShadow="False">
+                    <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto" ColumnSpacing="10">
+                        <Frame WidthRequest="60" HeightRequest="60"
+                               Padding="5"
+                               CornerRadius="30"
+                               BackgroundColor="#DADADA"
+                               HasShadow="False"
+                               VerticalOptions="Center"
+                               Grid.RowSpan="2">
+                            <Image Source="work_icon.png"
+                                   WidthRequest="60" HeightRequest="60"
+                                   Aspect="AspectFill"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center">
+                                <Image.Clip>
+                                    <EllipseGeometry Center="30,30" RadiusX="30" RadiusY="30"/>
+                                </Image.Clip>
+                            </Image>
+                        </Frame>
+                        <Label Text="Carpenter" FontAttributes="Bold" Grid.Column="1"/>
+                        <Label Text="JW Wood Furniture&#x0a;2016–2021" FontSize="13" TextColor="#777" Grid.Column="1" Grid.Row="1"/>
+                    </Grid>
+                </Frame>
+            </VerticalStackLayout>
+
+            <!-- Ratings Section -->
+            <VerticalStackLayout Padding="20,0" Margin="0,0,0,0">
+                <Label Text="Ratings and Reviews" FontSize="16" FontAttributes="Bold" Padding="0, 0, 0, 10"/>
+                <HorizontalStackLayout Spacing="6" VerticalOptions="Center">
+                    <Image Source="starfill_icon.png" HeightRequest="24"/>
+                    <Image Source="starfill_icon.png" HeightRequest="24"/>
+                    <Image Source="starfill_icon.png" HeightRequest="24"/>
+                    <Image Source="starfill_icon.png" HeightRequest="24"/>
+                    <Image Source="star_icon.png" HeightRequest="24"/>
+                    <Label Text="4.2 | 12k Ratings" FontSize="13" TextColor="#444" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+                
+            <!-- Review Overview Card -->
+            <Frame Margin="20,0,20,30"
+                   Padding="15"
+                   CornerRadius="16"
+                   BackgroundColor="#FAFAFA"
+                   HasShadow="True"
+                   BorderColor="#E0E0E0">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="15">
+                    <!-- Profile Picture -->
+                    <Frame WidthRequest="50" HeightRequest="50"
+                           Padding="0"
+                           CornerRadius="25"
+                           BackgroundColor="#DADADA"
+                           HasShadow="False"
+                           Grid.RowSpan="2"
+                           VerticalOptions="Start">
+                        <Image Source="profile_sample.jpg"
+                               Aspect="AspectFill"
+                               WidthRequest="50"
+                               HeightRequest="50"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center">
+                            <Image.Clip>
+                                <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25"/>
+                            </Image.Clip>
+                        </Image>
+                    </Frame>
+
+                    <!-- Reviewer Info -->
+                    <StackLayout Grid.Column="1" Spacing="0">
+                        <Label Text="Juan Dela Cruz"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#333"/>
+                        <Label Text="Client"
+                               FontSize="12"
+                               TextColor="#777"/>
+                    </StackLayout>
+
+                    <!-- Star Rating -->
+                    <HorizontalStackLayout Grid.Row="1" Grid.Column="1" Spacing="4" Padding="0,4,0,0">
+                        <Image Source="starfill_icon.png" HeightRequest="18"/>
+                        <Image Source="starfill_icon.png" HeightRequest="18"/>
+                        <Image Source="starfill_icon.png" HeightRequest="18"/>
+                        <Image Source="starfill_icon.png" HeightRequest="18"/>
+                        <Image Source="star_icon.png" HeightRequest="18"/>
+                    </HorizontalStackLayout>
+
+                    <!-- Review Text -->
+                    <Label Grid.Row="2" Grid.ColumnSpan="2"
+                           Text="Gus was professional and very attentive to detail. The bookshelf he built was sturdy and beautifully finished. Highly recommended!"
+                           FontSize="13"
+                           TextColor="#444"
+                           Margin="0,5,0,0"/>
+                </Grid>
+            </Frame>
+
+        </VerticalStackLayout>        
+</ContentView>

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Tambayan;
 
-public partial class Chat : ContentPage
+public partial class PostJob : ContentPage
 {
-    public Chat()
+    public PostJob()
     {
         InitializeComponent();
     }
-    private async void OnViewChatTapped(object sender, TappedEventArgs e)
+    private async void OnBackButtonClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new UserChat());
+        await Navigation.PopAsync();
     }
 }

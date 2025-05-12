@@ -57,7 +57,10 @@
                            CornerRadius="0" 
                            HasShadow="False"
                            Padding="15"
-                           BorderColor="Transparent"> <!-- Invisible border -->
+                           BorderColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnViewChatTapped" />
+                        </Frame.GestureRecognizers> 
 
                         <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center">
                             <!-- Profile Image -->

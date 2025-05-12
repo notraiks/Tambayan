@@ -72,6 +72,9 @@
                               WidthRequest="300"
                               HeightRequest="220"
                               IsClippedToBounds="True"> <!-- Important to clip corners on image -->
+                           <Frame.GestureRecognizers>
+                               <TapGestureRecognizer Tapped="OnThreadDetailTapped" />
+                           </Frame.GestureRecognizers> 
                            <Grid>
                                <!-- Background Image Layer -->
                                <Image Source="card_bg.png"

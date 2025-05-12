@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tambayan.Views.Profile">
+
+    <VerticalStackLayout Spacing="0">
+
+        <!-- Header Section -->
+        <Grid HeightRequest="260">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#0047FF" Offset="0.0"/>
+                    <GradientStop Color="#009DFF" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <HorizontalStackLayout Padding="15,0,0,200" HorizontalOptions="FillAndExpand" Spacing="0">
+                <Image Source="info_icon.png" HeightRequest="30" WidthRequest="30"/>
+                <BoxView WidthRequest="240" BackgroundColor="Transparent"/>
+                <Image Source="application_icon.png" HeightRequest="30" WidthRequest="30">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnApplicationTapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <BoxView WidthRequest="10" BackgroundColor="Transparent"/>
+                <Image Source="save_icon.png" HeightRequest="30" WidthRequest="30"/>
+                <BoxView WidthRequest="10" BackgroundColor="Transparent"/>
+                <Image Source="settings_icon.png" HeightRequest="30" WidthRequest="30"/>
+            </HorizontalStackLayout>
+
+            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10" Padding="4,50,4,4">
+                <Frame Padding="4" CornerRadius="120" BackgroundColor="White" HasShadow="False">
+                    <Image Source="gus.jpg" HeightRequest="120" WidthRequest="120" Aspect="AspectFill">
+                        <Image.Clip>
+                            <EllipseGeometry Center="60,60" RadiusX="60" RadiusY="60"/>
+                        </Image.Clip>
+                    </Image>
+                </Frame>
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="2">
+                    <HorizontalStackLayout Spacing="-1" VerticalOptions="Center">
+                        <Label Text="Gustavo Fring" Padding="0,0,4,0" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+                        <Image Source="editw_icon.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <Label Text="Mandaue City, Cebu" FontSize="13" TextColor="#E5E5E5"/>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- Progress Bar Section -->
+        <Grid Padding="20,20">
+            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
+                <Frame HeightRequest="20" CornerRadius="10" BackgroundColor="#E5E5E5" Padding="0" HasShadow="False" VerticalOptions="Center" BorderColor="Transparent">
+                    <Grid>
+                        <BoxView HeightRequest="15" CornerRadius="10" Margin="2, 0, 0, 0" HorizontalOptions="Start" WidthRequest="1000" BackgroundColor="#0047FF"/>
+                    </Grid>
+                </Frame>
+
+                <Frame Grid.Row="0"
+                       Grid.Column="1"
+                       HeightRequest="40"
+                       WidthRequest="40"
+                       BackgroundColor="White"
+                       BorderColor="#0047FF"
+                       CornerRadius="25"
+                       Padding="2"
+                       Margin="-12,0,0,0"
+                       VerticalOptions="Center"
+                       HasShadow="True">
+                    <Image Source="verified_icon.png" HeightRequest="40" WidthRequest="40"/>
+                </Frame>
+
+                <Label Grid.Row="1" Grid.ColumnSpan="2" Text="100% | Verified" FontSize="13" TextColor="#666" HorizontalOptions="Center" Margin="0,4,0,0"/>
+            </Grid>
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentView>

@@ -25,6 +25,11 @@
        Route="MainPage" />
     
     <ShellContent
+        Title="Community"
+        ContentTemplate="{DataTemplate local:Threads}"
+        Route="Threads" />
+    
+    <ShellContent
         Title="Profile"
         ContentTemplate="{DataTemplate local:Profile}"
         Route="Profile" />
@@ -38,5 +43,15 @@
         Title="Notification"
         ContentTemplate="{DataTemplate local:Notification}"
         Route="Notification" />
+    
+    <ShellContent
+        Title="My Application"
+        ContentTemplate="{DataTemplate local:MyApplication}"
+        Route="MyApplication" />
+    
+    <ShellContent
+        Title="Post a Job"
+        ContentTemplate="{DataTemplate local:PostJob}"
+        Route="PostJob" />
 
 </Shell>

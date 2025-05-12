@@ -17,5 +17,9 @@ public partial class Threads : ContentPage
     {
         await Navigation.PushAsync(new MainPage());
     }
-
+    
+    private async void OnThreadDetailTapped(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ThreadDetail());
+    }
 }
