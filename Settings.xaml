@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tambayan.Settings"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+
+   <ScrollView BackgroundColor="White">
+       <VerticalStackLayout Padding="20,10" Spacing="25" BackgroundColor="Transparent">
+
+           <!-- Header Bar -->
+           <Grid ColumnDefinitions="*,Auto"
+                 Padding="20,10,20,10"
+                 BackgroundColor="White"
+                 HeightRequest="60"
+                 Grid.Row="0">
+
+               <!-- Back Button (Absolute Left) -->
+               <ImageButton Source="back_icon.png"
+                            BackgroundColor="Transparent"
+                            HeightRequest="24"
+                            WidthRequest="24"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            Clicked="OnBackButtonClicked"
+                            Grid.Column="0"/>
+
+               <!-- Centered Title (Spans all columns for full center alignment) -->
+               <Label Text="Settings"
+                      FontSize="18"
+                      FontAttributes="Bold"
+                      TextColor="Black"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center"
+                      HorizontalTextAlignment="Center"
+                      Grid.ColumnSpan="2"/>
+
+               <!-- Ellipsis Button (Absolute Right) -->
+               <ImageButton Source="ellipsis_icon.png"
+                            BackgroundColor="Transparent"
+                            HeightRequest="10"
+                            WidthRequest="10"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            Grid.Column="1"/>
+           </Grid>
+
+
+           <!-- Section: Personal -->
+           <VerticalStackLayout Spacing="10" BackgroundColor="Transparent">
+               <Label Text="Personal"
+                      FontAttributes="Bold"
+                      FontSize="14"
+                      TextColor="Black" />
+
+
+               <Frame HasShadow="False" Padding="0" BackgroundColor="Transparent">
+                   <VerticalStackLayout BackgroundColor="Transparent">
+                       <Grid Padding="15,10" ColumnDefinitions="*, Auto">
+                           <Label Text="Account" FontSize="14" VerticalOptions="Center" />
+                           <Image Source="icon_chevron_right.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" />
+                       </Grid>
+                       <BoxView HeightRequest="1" Color="#E0E0E0" />
+                       <Grid Padding="15,10" ColumnDefinitions="*, Auto">
+                           <Label Text="Privacy" FontSize="14" VerticalOptions="Center" />
+                           <Image Source="icon_chevron_right.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" />
+                       </Grid>
+                       <BoxView HeightRequest="1" Color="#E0E0E0" />
+                       <Grid Padding="15,10" ColumnDefinitions="*, Auto">
+                           <Label Text="Security &amp; Permissions" FontSize="14" VerticalOptions="Center" />
+                           <Image Source="icon_chevron_right.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" />
+                       </Grid>
+                   </VerticalStackLayout>
+               </Frame>
+           </VerticalStackLayout>
+
+
+           <!-- Section: Preferences -->
+           <VerticalStackLayout Spacing="10" BackgroundColor="Transparent">
+               <Label Text="Preferences"
+                      FontAttributes="Bold"
+                      FontSize="14"
+                      TextColor="Black" />
+
+
+               <Frame HasShadow="False" Padding="0" BackgroundColor="Transparent">
+                   <VerticalStackLayout BackgroundColor="Transparent">
+                       <Grid Padding="15,10" ColumnDefinitions="*, Auto">
+                           <Label Text="Language" FontSize="14" VerticalOptions="Center" />
+                       </Grid>
+                       <BoxView HeightRequest="1" Color="#E0E0E0" />
+                       <Grid Padding="15,10" ColumnDefinitions="*, Auto">
+                           <Label Text="Job Preferences" FontSize="14" VerticalOptions="Center" />
+                           <Image Source="icon_chevron_right.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" />
+                       </Grid>
+                   </VerticalStackLayout>
+               </Frame>
+           </VerticalStackLayout>
+
+
+           <!-- Section: App & Data -->
+           <VerticalStackLayout Spacing="10" BackgroundColor="Transparent">
+               <Label Text="App &amp; Data"
+                      FontAttributes="Bold"
+                      FontSize="14"
+                      TextColor="Black" />
+
+
+               <Frame HasShadow="False" Padding="0" BackgroundColor="Transparent">
+                   <VerticalStackLayout BackgroundColor="Transparent">
+                       <Grid Padding="15,10" ColumnDefinitions="*, Auto">
+                           <Label Text="Manage App Storage" FontSize="14" VerticalOptions="Center" />
+                           <Image Source="icon_chevron_right.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" />
+                       </Grid>
+                       <BoxView HeightRequest="1" Color="#E0E0E0" />
+                       <Grid Padding="15,10" ColumnDefinitions="*, Auto">
+                           <Label Text="Data Management" FontSize="14" VerticalOptions="Center" />
+                           <Image Source="icon_chevron_right.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" />
+                       </Grid>
+                   </VerticalStackLayout>
+               </Frame>
+           </VerticalStackLayout>
+
+
+           <!-- Section: Help & Support -->
+           <VerticalStackLayout Spacing="10" BackgroundColor="Transparent">
+               <Label Text="Help &amp; Support"
+                      FontAttributes="Bold"
+                      FontSize="14"
+                      TextColor="Black" />
+
+
+               <Frame HasShadow="False" Padding="0" BackgroundColor="Transparent">
+                   <VerticalStackLayout BackgroundColor="Transparent">
+                       <Grid Padding="15,10" ColumnDefinitions="*, Auto">
+                           <Label Text="Help Center (FAQs)" FontSize="14" VerticalOptions="Center" />
+                           <Image Source="icon_chevron_right.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" />
+                       </Grid>
+                       <BoxView HeightRequest="1" Color="#E0E0E0" />
+                       <Grid Padding="15,10" ColumnDefinitions="*, Auto">
+                           <Label Text="Contact Support" FontSize="14" VerticalOptions="Center" />
+                           <Image Source="icon_chevron_right.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" />
+                       </Grid>
+                       <BoxView HeightRequest="1" Color="#E0E0E0" />
+                       <Grid Padding="15,10" ColumnDefinitions="*, Auto">
+                           <Label Text="Report a Problem" FontSize="14" VerticalOptions="Center" />
+                           <Image Source="icon_chevron_right.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" />
+                       </Grid>
+                       <BoxView HeightRequest="1" Color="#E0E0E0" />
+                       <Grid Padding="15,10" ColumnDefinitions="*, Auto">
+                           <Label Text="App Version Info" FontSize="14" VerticalOptions="Center" />
+                           <Image Source="icon_chevron_right.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" />
+                       </Grid>
+                   </VerticalStackLayout>
+               </Frame>
+           </VerticalStackLayout>
+
+
+           <!-- Logout -->
+           <Grid Padding="15,20,15,0" ColumnDefinitions="*, Auto" BackgroundColor="Transparent">
+               <Label Text="Logout"
+                      FontSize="14"
+                      TextColor="Red"
+                      VerticalOptions="Center">
+                   <Label.GestureRecognizers>
+                       <TapGestureRecognizer Tapped="OnLogoutClicked" />
+                   </Label.GestureRecognizers>
+               </Label>
+               <ImageButton Source="icon_logout.png"
+                      WidthRequest="18"
+                      HeightRequest="18"
+                      VerticalOptions="Center" />
+               
+           </Grid>
+
+
+       </VerticalStackLayout>
+   </ScrollView>
+
+
+</ContentPage>
+

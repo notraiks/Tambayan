@@ -16,4 +16,8 @@ public partial class Profile : ContentView
     {
         await Shell.Current.GoToAsync("MyApplication");
     }
+    private async void OnSettingsTapped(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("Settings");
+    }
 }

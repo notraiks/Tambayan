@@ -7,43 +7,42 @@
             BackgroundColor="White">
 
     <Grid RowDefinitions="Auto,*,Auto">
+            <!-- Header Bar -->
+            <Grid ColumnDefinitions="*,Auto"
+                  Padding="20,10,20,10"
+                  BackgroundColor="White"
+                  HeightRequest="60"
+                  Grid.Row="0">
 
-        <!-- Header Bar -->
-        <Grid ColumnDefinitions="*,Auto"
-              Padding="20,10,20,10"
-              BackgroundColor="White"
-              HeightRequest="60"
-              Grid.Row="0">
+                <!-- Back Button (Absolute Left) -->
+                <ImageButton Source="back_icon.png"
+                             BackgroundColor="Transparent"
+                             HeightRequest="24"
+                             WidthRequest="24"
+                             HorizontalOptions="Start"
+                             VerticalOptions="Center"
+                             Clicked="OnBackButtonClicked"
+                             Grid.Column="0"/>
 
-            <!-- Back Button (Absolute Left) -->
-            <ImageButton Source="back_icon.png"
-                         BackgroundColor="Transparent"
-                         HeightRequest="24"
-                         WidthRequest="24"
-                         HorizontalOptions="Start"
-                         VerticalOptions="Center"
-                         Clicked="OnBackButtonClicked"
-                         Grid.Column="0"/>
+                <!-- Centered Title (Spans all columns for full center alignment) -->
+                <Label Text="Post a Job Request"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       Grid.ColumnSpan="2"/>
 
-            <!-- Centered Title (Spans all columns for full center alignment) -->
-            <Label Text="Create Job Request"
-                   FontSize="18"
-                   FontAttributes="Bold"
-                   TextColor="Black"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"
-                   HorizontalTextAlignment="Center"
-                   Grid.ColumnSpan="2"/>
-
-            <!-- Ellipsis Button (Absolute Right) -->
-            <ImageButton Source="ellipsis_icon.png"
-                         BackgroundColor="Transparent"
-                         HeightRequest="10"
-                         WidthRequest="10"
-                         HorizontalOptions="End"
-                         VerticalOptions="Center"
-                         Grid.Column="1"/>
-        </Grid>
+                <!-- Ellipsis Button (Absolute Right) -->
+                <ImageButton Source="ellipsis_icon.png"
+                             BackgroundColor="Transparent"
+                             HeightRequest="10"
+                             WidthRequest="10"
+                             HorizontalOptions="End"
+                             VerticalOptions="Center"
+                             Grid.Column="1"/>
+            </Grid>
 
    <ScrollView>
        <VerticalStackLayout Padding="20" Spacing="20">

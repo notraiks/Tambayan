@@ -16,8 +16,7 @@
     <ShellContent
         Title="Register"
         ContentTemplate="{DataTemplate local:Register}"
-        Route="Register"
-        IsVisible="False" />
+        Route="Register"/>
   
     <ShellContent
        Title="Home"
@@ -48,6 +47,11 @@
         Title="My Application"
         ContentTemplate="{DataTemplate local:MyApplication}"
         Route="MyApplication" />
+    
+    <ShellContent
+        Title="Settings"
+        ContentTemplate="{DataTemplate local:Settings}"
+        Route="Settings" />
     
     <ShellContent
         Title="Post a Job"

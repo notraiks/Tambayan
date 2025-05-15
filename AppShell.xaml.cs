@@ -10,5 +10,6 @@ public partial class AppShell : Shell
         Routing.RegisterRoute("MainPage", typeof(MainPage));
         Routing.RegisterRoute("Threads", typeof(Threads));
         Routing.RegisterRoute("MyApplication", typeof(MyApplication));
+        Routing.RegisterRoute("Settings", typeof(Settings));
     }
 }

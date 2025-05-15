@@ -6,7 +6,7 @@
              Shell.NavBarIsVisible="False"
              BackgroundColor="#FAFAFA">
     
-   <ScrollView>
+    <ScrollView>
        <VerticalStackLayout Padding="30" Spacing="20">
 
 
@@ -27,32 +27,32 @@
                   TextColor="Gray" />
 
 
-           <Entry Placeholder="Full Name"
+           <Entry x:Name="FullNameEntry"
+                  Placeholder="Full Name"
                   TextColor="Black"
                   BackgroundColor="#f5f5f5"
                   HeightRequest="50" />
 
-
-           <Entry Placeholder="E-mail"
+           <Entry x:Name="EmailEntry"
+                  Placeholder="E-mail"
                   Keyboard="Email"
                   TextColor="Black"
                   BackgroundColor="#f5f5f5"
                   HeightRequest="50" />
 
-
-           <Entry Placeholder="Password"
+           <Entry x:Name="PasswordEntry"
+                  Placeholder="Password"
                   IsPassword="True"
                   TextColor="Black"
                   BackgroundColor="#f5f5f5"
                   HeightRequest="50" />
 
-
-           <Entry Placeholder="Confirm Password"
+           <Entry x:Name="ConfirmPasswordEntry"
+                  Placeholder="Confirm Password"
                   IsPassword="True"
                   TextColor="Black"
                   BackgroundColor="#f5f5f5"
                   HeightRequest="50" />
-
 
            <Button Text="Register"
                    Clicked="OnRegisterClicked"

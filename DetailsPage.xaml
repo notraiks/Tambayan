@@ -205,7 +205,7 @@
                            FontSize="14"
                            TextColor="#555"/>
                 </VerticalStackLayout>
-
+                
                 <!-- Requirements Section -->
                 <VerticalStackLayout x:Name="RequirementsContent" IsVisible="False">
                     <Label Text="Job Requirements"
@@ -213,10 +213,11 @@
                            Padding="0, 10"
                            FontAttributes="Bold"
                            TextColor="Black"/>
-                    <Label Text="• Must be proficient in basic ecommerce setup\n• Familiar with Shopee or Lazada backend\n• Able to communicate with seller support\n• Working device and stable internet connection required"
+                    <Label Text="• Must be proficient in setting up and managing ecommerce platforms (e.g., Shopee, Lazada)&#x0a;• Experience using seller dashboards and uploading product listings&#x0a;• Ability to communicate clearly with platform support teams&#x0a;• Detail-oriented and responsive to customer inquiries&#x0a;• Must own a working smartphone or laptop&#x0a;• Stable internet connection (minimum 5 Mbps required)"
                            FontSize="14"
                            TextColor="#555"/>
                 </VerticalStackLayout>
+
             </VerticalStackLayout>
         </ScrollView>
 
